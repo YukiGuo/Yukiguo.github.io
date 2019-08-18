@@ -3,36 +3,41 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://example.org/posts/html%E5%B8%B8%E7%94%A8%E6%A0%87%E7%AD%BE/</loc>
+    <loc>https://example.com/posts/hugo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</loc>
+    <lastmod>2019-08-18T15:56:52+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://example.com/posts/</loc>
+    <lastmod>2019-08-18T15:56:52+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://example.com/</loc>
+    <lastmod>2019-08-18T15:56:52+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://example.com/posts/html%E5%B8%B8%E7%94%A8%E6%A0%87%E7%AD%BE/</loc>
     <lastmod>2019-08-16T18:56:52+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/posts/</loc>
-    <lastmod>2019-08-16T18:56:52+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://example.org/</loc>
-    <lastmod>2019-08-16T18:56:52+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://example.org/posts/html%E5%85%A5%E9%97%A8/</loc>
+    <loc>https://example.com/posts/html%E5%85%A5%E9%97%A8/</loc>
     <lastmod>2019-08-15T18:56:52+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/posts/%E5%BC%80%E5%8D%9A%E5%A4%A7%E5%90%89/</loc>
+    <loc>https://example.com/posts/%E5%BC%80%E5%8D%9A%E5%A4%A7%E5%90%89/</loc>
     <lastmod>2019-08-14T18:56:52+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/categories/</loc>
+    <loc>https://example.com/categories/</loc>
   </url>
   
   <url>
-    <loc>http://example.org/tags/</loc>
+    <loc>https://example.com/tags/</loc>
   </url>
   
 </urlset>
