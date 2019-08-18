@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on myblog</title>
+    <title>Posts on mytitle</title>
     <link>https://example.com/posts/</link>
-    <description>Recent content in Posts on myblog</description>
+    <description>Recent content in Posts on mytitle</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-Hans</language>
+    <language>en-us</language>
     <copyright>My Name</copyright>
     <lastBuildDate>Sun, 18 Aug 2019 15:56:52 +0800</lastBuildDate>
     
