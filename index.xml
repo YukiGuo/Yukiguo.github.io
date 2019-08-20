@@ -20,7 +20,7 @@
       <description>安装Hugo 创建目录：id.github.io-creator hugo new site id.github.io-creator 设置主题
 $ cd id.github.io-creator $ git init $ git submodule add https://github.com/budparr/gohugo-theme-ananke.git themes/ananke $ echo &amp;#39;theme = &amp;#34;ananke&amp;#34;&amp;#39; &amp;gt;&amp;gt; config.toml 添加第一篇博文
 $ hugo new posts/my-first-post.md $ hugo server -D 创建静态页面
- 在当前目录创建了一个public文件夹,新建 .gitignore文并,内容填写public，并将public单独创建创建本地仓库并且上传github
+ 在当前目录创建了一个public文件夹,新建 .gitignore文并,内容填写public， 并将public单独创建创建本地仓库并且上传github
 $ hugo $ cd public $ git init $ git add . $ git commit -m &amp;#34;开博啦&amp;#34; $ github页面新建仓库 命名为 id.github.io $ git remote add origin ssh $ git push -u origin master  github设置 :setting &amp;ndash;GitHub Pages &amp;mdash;master branch ,后面显示的地址则是博客的静态地址</description>
     </item>
     
