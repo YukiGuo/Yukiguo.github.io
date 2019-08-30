@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>CSS布局 - 郭郭的博客</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="CSS布局" />
+<meta property="og:description" content="兼容性 gird 布局&gt;flex 布局&gt; float布局 固定宽度布局 不固定宽度布局 float布局(专门为IE定制的布局)  子元素：float:left 和width(最后一个子元素可以不设置宽度会根据内容自动，可以加一个max-width) 父元素：.clearfix::after{ content:&ldquo;; display:inline-block; clear:both; } IE 6 &amp; 7存在双倍margin bug 解决方法:
+margin-left:10px;_margin-left:5px;
+或者设置：display：block；
+响应式布局  flex 布局  container  display:flex | inline-flex; flex-direction:row |column |row-reverse |column-reverse; flex-wrap:nowrap|wrap; justify-content:flex-start|flex-end|center|space-between|space-around|space-evenly; 主轴对齐方式 align-items:stretch|flex-start|flex-end|center; 次轴对齐方式 align-content:stretch|flex-start|flex-end|center|space-between|space-around 主轴多行对齐方式     items  order:num; item的显示顺序按照order从小到大显示，默认为0 flex-grow:num ; 每个item占据的空间，数字越大，空间越大 flex-shrink: num 空间不够时，数字越大，缩小的程度越大，为0时表示不会被缩小 align-self: stretch|flex-start|flex-end|center *单个item的对齐方式 *   gird 布局 小技巧 img 标签 添加背景颜色后有多余的东西，可以用vertical-align:top/middle" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/css%E5%B8%83%E5%B1%80/" />
+<meta property="article:published_time" content="2019-08-25T12:57:09+08:00" />
+<meta property="article:modified_time" content="2019-08-25T12:57:09+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="CSS布局"/>
+<meta name="twitter:description" content="兼容性 gird 布局&gt;flex 布局&gt; float布局 固定宽度布局 不固定宽度布局 float布局(专门为IE定制的布局)  子元素：float:left 和width(最后一个子元素可以不设置宽度会根据内容自动，可以加一个max-width) 父元素：.clearfix::after{ content:&ldquo;; display:inline-block; clear:both; } IE 6 &amp; 7存在双倍margin bug 解决方法:
+margin-left:10px;_margin-left:5px;
+或者设置：display：block；
+响应式布局  flex 布局  container  display:flex | inline-flex; flex-direction:row |column |row-reverse |column-reverse; flex-wrap:nowrap|wrap; justify-content:flex-start|flex-end|center|space-between|space-around|space-evenly; 主轴对齐方式 align-items:stretch|flex-start|flex-end|center; 次轴对齐方式 align-content:stretch|flex-start|flex-end|center|space-between|space-around 主轴多行对齐方式     items  order:num; item的显示顺序按照order从小到大显示，默认为0 flex-grow:num ; 每个item占据的空间，数字越大，空间越大 flex-shrink: num 空间不够时，数字越大，缩小的程度越大，为0时表示不会被缩小 align-self: stretch|flex-start|flex-end|center *单个item的对齐方式 *   gird 布局 小技巧 img 标签 添加背景颜色后有多余的东西，可以用vertical-align:top/middle"/>
+<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:500,100,300" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" media="screen" href="/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" /><script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script><script src="/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper post">
+		<div class="header">
+	<h1 class="site-title">郭郭的博客</h1>
+	<div class="site-description"><h2></h2><nav class="nav social">
+			<ul class="flat"><a href="https://github.com/vividvilla/ezhil" title="Github"><i data-feather="github"></i></a><a href="https://twitter.com/gohugoio" title="Twitter"><i data-feather="twitter"></i></a></ul>
+		</nav>
+	</div>
+
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="">我的博客</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
+
+
+		<div class="post-header">
+			<h1 class="title">CSS布局</h1>
+			<div class="meta">Posted at &mdash; Aug 25, 2019</div>
+		</div>
+
+		<div class="markdown">
+			
+
+<h4 id="兼容性-gird-布局-flex-布局-float布局">兼容性  gird 布局&gt;flex 布局&gt; float布局</h4>
+
+<h4 id="固定宽度布局">固定宽度布局</h4>
+
+<h4 id="不固定宽度布局">不固定宽度布局</h4>
+
+<h3 id="float布局-专门为ie定制的布局">float布局(专门为IE定制的布局)</h3>
+
+<ol>
+<li>子元素：float:left 和width(最后一个子元素可以不设置宽度会根据内容自动，可以加一个max-width)</li>
+<li>父元素：.clearfix::after{
+ content:&ldquo;;
+ display:inline-block;
+ clear:both;
+}</li>
+
+<li><p>IE 6 &amp; 7存在双倍margin bug 解决方法:</p>
+
+<p>margin-left:10px;_margin-left:5px;</p>
+
+<p>或者设置：display：block；</p>
+
+<h4 id="响应式布局">响应式布局</h4></li>
+</ol>
+
+<h3 id="flex-布局">flex 布局</h3>
+
+<ol>
+<li>container
+
+<ul>
+<li>display:flex | inline-flex;</li>
+<li>flex-direction:row |column |row-reverse |column-reverse;</li>
+<li>flex-wrap:nowrap|wrap;</li>
+<li>justify-content:flex-start|flex-end|center|space-between|space-around|space-evenly;   <em>主轴对齐方式</em></li>
+<li>align-items:stretch|flex-start|flex-end|center;  <em>次轴对齐方式</em></li>
+<li>align-content:stretch|flex-start|flex-end|center|space-between|space-around  <em>主轴多行对齐方式</em>
+
+<br /></li>
+</ul></li>
+</ol>
+
+<hr />
+
+<ol>
+<li>items
+
+<ul>
+<li>order:num;  <em>item的显示顺序按照order从小到大显示，默认为0</em></li>
+<li>flex-grow:num ;  <em>每个item占据的空间，数字越大，空间越大</em></li>
+<li>flex-shrink: num  <em>空间不够时，数字越大，缩小的程度越大，为0时表示不会被缩小</em></li>
+<li>align-self: stretch|flex-start|flex-end|center *单个item的对齐方式 *</li>
+</ul></li>
+</ol>
+
+<h3 id="gird-布局">gird 布局</h3>
+
+<h5 id="小技巧">小技巧</h5>
+
+<p>img 标签 添加背景颜色后有多余的东西，可以用vertical-align:top/middle</p>
+
+<p>CSS做页面布局时 border 会干扰页面，这时可以用outline</p>
+
+		</div><div id="disqus_thread"></div>
+<script type="text/javascript">
+	(function () {
+		
+		
+		if (window.location.hostname == "localhost")
+			return;
+
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		var disqus_shortname = 'localhost';
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+		Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div><a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-123-45', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<script>feather.replace()</script>
+</body>
+</html>

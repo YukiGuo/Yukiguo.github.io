@@ -6,10 +6,35 @@
     <description>Recent content in Posts on 郭郭的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-Hans</language>
-    <lastBuildDate>Sun, 18 Aug 2019 15:56:52 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 30 Aug 2019 21:29:47 +0800</lastBuildDate>
     
 	<atom:link href="http://example.org/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>HTTP入门</title>
+      <link>http://example.org/posts/http%E5%85%A5%E9%97%A8/</link>
+      <pubDate>Fri, 30 Aug 2019 21:29:47 +0800</pubDate>
+      
+      <guid>http://example.org/posts/http%E5%85%A5%E9%97%A8/</guid>
+      <description>一、IP Internet Protocol 网际协议 1. 两个作用：  如何定位设备 封装数据报文，以跟其他设备交流  2. 内网&amp;amp;外网  内网和外网通过路由器连接 内网的设备可以互相访问，但是不能访问外网 内网和外网是两个隔绝的空间，只有通过路由器才能互通 外网的设备可以相互访问但是无法访问你的内网  3. 特殊的Ip  127.0.01 表示自己 localhost 也表示自己 区别是可以通过C盘hosts文件更改 0.0.0.0 不表示任何设备  4. port 端口 总计 共有65535个端口  HTTP : 80端口 HTTPS : 443 端口 FTP : 21 端口
+5. IP和域名的对应关系 一个域名可以对应不同的端口 &amp;mdash;&amp;ndash;负载均衡
+ 一个IP可以对应不同的域名 &amp;mdash;&amp;mdash;共享主机
+  6. IP和域名如何对应  通过DNS(Domain Name System) com 是顶级域名 IP 查询 命令行 ping baidu.com
+二、URL Uniform Resource Locator 统一资源定位符  协议+域名或IP+端口+路径+查询字符串+锚点 https://baike.</description>
+    </item>
+    
+    <item>
+      <title>CSS布局</title>
+      <link>http://example.org/posts/css%E5%B8%83%E5%B1%80/</link>
+      <pubDate>Sun, 25 Aug 2019 12:57:09 +0800</pubDate>
+      
+      <guid>http://example.org/posts/css%E5%B8%83%E5%B1%80/</guid>
+      <description>兼容性 gird 布局&amp;gt;flex 布局&amp;gt; float布局 固定宽度布局 不固定宽度布局 float布局(专门为IE定制的布局)  子元素：float:left 和width(最后一个子元素可以不设置宽度会根据内容自动，可以加一个max-width) 父元素：.clearfix::after{ content:&amp;ldquo;; display:inline-block; clear:both; } IE 6 &amp;amp; 7存在双倍margin bug 解决方法:
+margin-left:10px;_margin-left:5px;
+或者设置：display：block；
+响应式布局  flex 布局  container  display:flex | inline-flex; flex-direction:row |column |row-reverse |column-reverse; flex-wrap:nowrap|wrap; justify-content:flex-start|flex-end|center|space-between|space-around|space-evenly; 主轴对齐方式 align-items:stretch|flex-start|flex-end|center; 次轴对齐方式 align-content:stretch|flex-start|flex-end|center|space-between|space-around 主轴多行对齐方式     items  order:num; item的显示顺序按照order从小到大显示，默认为0 flex-grow:num ; 每个item占据的空间，数字越大，空间越大 flex-shrink: num 空间不够时，数字越大，缩小的程度越大，为0时表示不会被缩小 align-self: stretch|flex-start|flex-end|center *单个item的对齐方式 *   gird 布局 小技巧 img 标签 添加背景颜色后有多余的东西，可以用vertical-align:top/middle</description>
+    </item>
     
     <item>
       <title>hugo个人博客搭建</title>

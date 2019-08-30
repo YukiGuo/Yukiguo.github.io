@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>HTTP入门 - 郭郭的博客</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="HTTP入门" />
+<meta property="og:description" content="一、IP Internet Protocol 网际协议 1. 两个作用：  如何定位设备 封装数据报文，以跟其他设备交流  2. 内网&amp;外网  内网和外网通过路由器连接 内网的设备可以互相访问，但是不能访问外网 内网和外网是两个隔绝的空间，只有通过路由器才能互通 外网的设备可以相互访问但是无法访问你的内网  3. 特殊的Ip  127.0.01 表示自己 localhost 也表示自己 区别是可以通过C盘hosts文件更改 0.0.0.0 不表示任何设备  4. port 端口 总计 共有65535个端口  HTTP : 80端口 HTTPS : 443 端口 FTP : 21 端口
+5. IP和域名的对应关系 一个域名可以对应不同的端口 &mdash;&ndash;负载均衡
+ 一个IP可以对应不同的域名 &mdash;&mdash;共享主机
+  6. IP和域名如何对应  通过DNS(Domain Name System) com 是顶级域名 IP 查询 命令行 ping baidu.com
+二、URL Uniform Resource Locator 统一资源定位符  协议&#43;域名或IP&#43;端口&#43;路径&#43;查询字符串&#43;锚点 https://baike." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/http%E5%85%A5%E9%97%A8/" />
+<meta property="article:published_time" content="2019-08-30T21:29:47+08:00" />
+<meta property="article:modified_time" content="2019-08-30T21:29:47+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="HTTP入门"/>
+<meta name="twitter:description" content="一、IP Internet Protocol 网际协议 1. 两个作用：  如何定位设备 封装数据报文，以跟其他设备交流  2. 内网&amp;外网  内网和外网通过路由器连接 内网的设备可以互相访问，但是不能访问外网 内网和外网是两个隔绝的空间，只有通过路由器才能互通 外网的设备可以相互访问但是无法访问你的内网  3. 特殊的Ip  127.0.01 表示自己 localhost 也表示自己 区别是可以通过C盘hosts文件更改 0.0.0.0 不表示任何设备  4. port 端口 总计 共有65535个端口  HTTP : 80端口 HTTPS : 443 端口 FTP : 21 端口
+5. IP和域名的对应关系 一个域名可以对应不同的端口 &mdash;&ndash;负载均衡
+ 一个IP可以对应不同的域名 &mdash;&mdash;共享主机
+  6. IP和域名如何对应  通过DNS(Domain Name System) com 是顶级域名 IP 查询 命令行 ping baidu.com
+二、URL Uniform Resource Locator 统一资源定位符  协议&#43;域名或IP&#43;端口&#43;路径&#43;查询字符串&#43;锚点 https://baike."/>
+<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:500,100,300" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" media="screen" href="/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" /><script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script><script src="/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper post">
+		<div class="header">
+	<h1 class="site-title">郭郭的博客</h1>
+	<div class="site-description"><h2></h2><nav class="nav social">
+			<ul class="flat"><a href="https://github.com/vividvilla/ezhil" title="Github"><i data-feather="github"></i></a><a href="https://twitter.com/gohugoio" title="Twitter"><i data-feather="twitter"></i></a></ul>
+		</nav>
+	</div>
+
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="">我的博客</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
+
+
+		<div class="post-header">
+			<h1 class="title">HTTP入门</h1>
+			<div class="meta">Posted at &mdash; Aug 30, 2019</div>
+		</div>
+
+		<div class="markdown">
+			
+
+<h4 id="一-ip-internet-protocol-网际协议">一、IP Internet Protocol  网际协议</h4>
+
+<h5 id="1-两个作用">1. 两个作用：</h5>
+
+<ol>
+<li>如何定位设备</li>
+<li>封装数据报文，以跟其他设备交流</li>
+</ol>
+
+<h5 id="2-内网-外网">2. 内网&amp;外网</h5>
+
+<ul>
+<li>内网和外网通过路由器连接</li>
+<li>内网的设备可以互相访问，但是不能访问外网</li>
+<li>内网和外网是两个隔绝的空间，只有通过路由器才能互通</li>
+<li>外网的设备可以相互访问但是无法访问你的内网</li>
+</ul>
+
+<h5 id="3-特殊的ip">3. 特殊的Ip</h5>
+
+<ul>
+<li>127.0.01 表示自己</li>
+<li>localhost 也表示自己 区别是可以通过C盘hosts文件更改</li>
+<li>0.0.0.0 不表示任何设备</li>
+</ul>
+
+<h5 id="4-port-端口-总计-共有65535个端口">4. port 端口 总计 共有65535个端口</h5>
+
+<ul>
+<li>HTTP : 80端口</li>
+<li>HTTPS : 443 端口</li>
+
+<li><p>FTP : 21 端口</p>
+
+<h5 id="5-ip和域名的对应关系">5. IP和域名的对应关系</h5></li>
+
+<li><p>一个域名可以对应不同的端口 &mdash;&ndash;负载均衡</p></li>
+
+<li><p>一个IP可以对应不同的域名   &mdash;&mdash;共享主机</p></li>
+</ul>
+
+<h5 id="6-ip和域名如何对应">6. IP和域名如何对应</h5>
+
+<ul>
+<li>通过DNS(Domain Name System)</li>
+<li>com 是顶级域名</li>
+
+<li><p>IP 查询 命令行 ping baidu.com</p>
+
+<h4 id="二-url-uniform-resource-locator-统一资源定位符">二、URL Uniform Resource Locator 统一资源定位符</h4>
+
+<ul>
+<li>协议+域名或IP+端口+路径+查询字符串+锚点   <em><a href="https://baike.baidu.com/item/?wd=URL/#3">https://baike.baidu.com/item/?wd=URL/#3</a></em></li>
+<li>查询参数 用一个页面不同的内容</li>
+<li>锚点 同一个内容 不同位置&mdash;&ndash;<em>锚点不支持中文，锚点不会传到服务器</em></li>
+</ul></li>
+</ul>
+
+<h4 id="三-http-hypertext-transfer-protocol-超文本传输协议-基于tcp-和ip两个协议">三、HTTP HyperText Transfer Protocol  超文本传输协议 &mdash;&ndash; 基于TCP 和IP两个协议</h4>
+
+<ol>
+<li><p>HTTP请求 &mdash;&ndash;借助用户代理发送请求(User Agent)</p>
+
+<ol>
+<li>1.1 命令行发出http请求</li>
+<li>curl -v <a href="http://baidu.com">http://baidu.com</a></li>
+<li>curl -s -v <a href="https://baidu.com">https://baidu.com</a></li>
+<li>chrome 地址栏发送请求</li>
+<li>HTTP 规定请求和响应的格式</li>
+</ol></li>
+</ol>
+
+<p>注意：http server -c -1 -p 80 *-p 80为请求端口*，一个端口只能被占用一次</p>
+
+		</div><div id="disqus_thread"></div>
+<script type="text/javascript">
+	(function () {
+		
+		
+		if (window.location.hostname == "localhost")
+			return;
+
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		var disqus_shortname = 'localhost';
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+		Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div><a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-123-45', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<script>feather.replace()</script>
+</body>
+</html>
