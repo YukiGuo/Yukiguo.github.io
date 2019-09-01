@@ -17,11 +17,8 @@
       <pubDate>Fri, 30 Aug 2019 21:29:47 +0800</pubDate>
       
       <guid>http://example.org/posts/http%E5%85%A5%E9%97%A8/</guid>
-      <description>一、IP Internet Protocol 网际协议 1. 两个作用：  如何定位设备 封装数据报文，以跟其他设备交流  2. 内网&amp;amp;外网  内网和外网通过路由器连接 内网的设备可以互相访问，但是不能访问外网 内网和外网是两个隔绝的空间，只有通过路由器才能互通 外网的设备可以相互访问但是无法访问你的内网  3. 特殊的Ip  127.0.01 表示自己 localhost 也表示自己 区别是可以通过C盘hosts文件更改 0.0.0.0 不表示任何设备  4. port 端口 总计 共有65535个端口  HTTP : 80端口 HTTPS : 443 端口 FTP : 21 端口
-5. IP和域名的对应关系 一个域名可以对应不同的端口 &amp;mdash;&amp;ndash;负载均衡
- 一个IP可以对应不同的域名 &amp;mdash;&amp;mdash;共享主机
-  6. IP和域名如何对应  通过DNS(Domain Name System) com 是顶级域名 IP 查询 命令行 ping baidu.com
-二、URL Uniform Resource Locator 统一资源定位符  协议+域名或IP+端口+路径+查询字符串+锚点 https://baike.</description>
+      <description>一、IP Internet Protocol 网际协议 1. 两个作用：  如何定位设备 封装数据报文，以跟其他设备交流  2. 内网&amp;amp;外网  内网和外网通过路由器连接 内网的设备可以互相访问，但是不能访问外网 内网和外网是两个隔绝的空间，只有通过路由器才能互通 外网的设备可以相互访问但是无法访问你的内网  3. 特殊的Ip  127.0.01 表示自己 localhost 也表示自己 区别是可以通过C盘hosts文件更改 0.0.0.0 不表示任何设备  4. port 端口 总计 共有65535个端口  HTTP : 80端口 HTTPS : 443 端口 FTP : 21 端口  5. IP和域名的对应关系  一个域名可以对应不同的端口 &amp;mdash;&amp;ndash;负载均衡 一个IP可以对应不同的域名 &amp;mdash;&amp;mdash;共享主机  6.域名  域名是由一串用点分隔的字符组成的互联网上某一台计算机或计算机组的名称，用于在数据传输时标识计算机的电子方位。域名可以说是一个IP地址的代称，目的是为了便于记忆后者 DNS(Domain Name System): 连接域名和IP
+ 浏览器向DNS服务器询问xiedaimala.com对应的IP DNS 回复一个IP 浏览器再向对应的IP端口，80/443发送请求 请求内容是查看 xiedaimala.com的首页  域名层次 ：域名名由一或多个部分组成，这些部分通常连接在一起，并由点分隔，一个域名的层次结构，从右侧到左侧隔一个点依次下降一层。</description>
     </item>
     
     <item>
