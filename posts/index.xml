@@ -17,15 +17,8 @@
       <pubDate>Mon, 09 Sep 2019 21:26:03 +0800</pubDate>
       
       <guid>http://example.org/posts/javascript%E5%85%A5%E9%97%A8/</guid>
-      <description> 表达式 语句
- 大小写敏感
- 空格 不影响断句即可
- 回车 return 后面不可以加回车，否则会返回undefined
- 标识符
- 第一个字母：Unicode 编码字符，$ _或者中文 第二个字母：上面所有内容和数字  注释 : // &amp;mdash;&amp;mdash;单行注释 /* */ &amp;mdash;&amp;mdash;多行注释
- 踩坑注释 为什么代码会写得这么奇怪，遇到了什么bug  区块 block 被大括号包裹的多行代码{ }通常与if和for联合使用
- if语句
-  </description>
+      <description>1.表达式 2.语句 3.大小写敏感 4.空格 没有实际意义，不影响断句即可 5.回车 大部分没有意义，但是return 后面不可以加回车，否则会返回undefined 6.标识符  第一个字母：Unicode 编码字母，$ 或 _ 或中文 第二个字母：上面所有内容和数字  7.注释 : // &amp;mdash;&amp;mdash;单行注释 ； /* */ &amp;mdash;&amp;mdash;多行注释  踩坑注释 为什么代码会写得这么奇怪，遇到了什么bug  8.区块 block 被大括号包裹的多行代码{ }通常与if,for,while联合使用 9.if语句 &amp;mdash;&amp;mdash; if (表达式){语句1}else{语句2}  { } 在语句只有一句时可以省略，但是不推荐，无{ }的只执行到第一句代码结束(逗号隔开的也为一个语句) if 表达式可以为(a=1)，但是这样会改变a的值。判断建议使用(a===1) 语句1 和语句2 都可以嵌套
+//语句1嵌套，并且省略了{ } var a=9 if (a&amp;lt;100&amp;gt;) if (1&amp;lt;10&amp;gt;) console.log(&amp;#39;a&amp;lt;10&amp;#39;) 成立 //语句2 嵌套 if(a&amp;gt;100){ }else{ if (a&amp;lt;10&amp;gt;){ console.log(&amp;#39;a&amp;lt;10&amp;#39;) } } //语句2 嵌套省略{ } if(a&amp;gt;100){ }else if (a&amp;lt;10&amp;gt;){ console.</description>
     </item>
     
     <item>

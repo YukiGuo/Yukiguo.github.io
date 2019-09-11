@@ -4,30 +4,16 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Javascript入门 - 郭郭的博客</title><meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta property="og:title" content="Javascript入门" />
-<meta property="og:description" content=" 表达式 语句
- 大小写敏感
- 空格 不影响断句即可
- 回车 return 后面不可以加回车，否则会返回undefined
- 标识符
- 第一个字母：Unicode 编码字符，$ _或者中文 第二个字母：上面所有内容和数字  注释 : // &mdash;&mdash;单行注释 /* */ &mdash;&mdash;多行注释
- 踩坑注释 为什么代码会写得这么奇怪，遇到了什么bug  区块 block 被大括号包裹的多行代码{ }通常与if和for联合使用
- if语句
-  " />
+<meta property="og:description" content="1.表达式 2.语句 3.大小写敏感 4.空格 没有实际意义，不影响断句即可 5.回车 大部分没有意义，但是return 后面不可以加回车，否则会返回undefined 6.标识符  第一个字母：Unicode 编码字母，$ 或 _ 或中文 第二个字母：上面所有内容和数字  7.注释 : // &mdash;&mdash;单行注释 ； /* */ &mdash;&mdash;多行注释  踩坑注释 为什么代码会写得这么奇怪，遇到了什么bug  8.区块 block 被大括号包裹的多行代码{ }通常与if,for,while联合使用 9.if语句 &mdash;&mdash; if (表达式){语句1}else{语句2}  { } 在语句只有一句时可以省略，但是不推荐，无{ }的只执行到第一句代码结束(逗号隔开的也为一个语句) if 表达式可以为(a=1)，但是这样会改变a的值。判断建议使用(a===1) 语句1 和语句2 都可以嵌套
+//语句1嵌套，并且省略了{ } var a=9 if (a&lt;100&gt;) if (1&lt;10&gt;) console.log(&#39;a&lt;10&#39;) 成立 //语句2 嵌套 if(a&gt;100){ }else{ if (a&lt;10&gt;){ console.log(&#39;a&lt;10&#39;) } } //语句2 嵌套省略{ } if(a&gt;100){ }else if (a&lt;10&gt;){ console." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://example.org/posts/javascript%E5%85%A5%E9%97%A8/" />
 <meta property="article:published_time" content="2019-09-09T21:26:03+08:00" />
 <meta property="article:modified_time" content="2019-09-09T21:26:03+08:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Javascript入门"/>
-<meta name="twitter:description" content=" 表达式 语句
- 大小写敏感
- 空格 不影响断句即可
- 回车 return 后面不可以加回车，否则会返回undefined
- 标识符
- 第一个字母：Unicode 编码字符，$ _或者中文 第二个字母：上面所有内容和数字  注释 : // &mdash;&mdash;单行注释 /* */ &mdash;&mdash;多行注释
- 踩坑注释 为什么代码会写得这么奇怪，遇到了什么bug  区块 block 被大括号包裹的多行代码{ }通常与if和for联合使用
- if语句
-  "/>
+<meta name="twitter:description" content="1.表达式 2.语句 3.大小写敏感 4.空格 没有实际意义，不影响断句即可 5.回车 大部分没有意义，但是return 后面不可以加回车，否则会返回undefined 6.标识符  第一个字母：Unicode 编码字母，$ 或 _ 或中文 第二个字母：上面所有内容和数字  7.注释 : // &mdash;&mdash;单行注释 ； /* */ &mdash;&mdash;多行注释  踩坑注释 为什么代码会写得这么奇怪，遇到了什么bug  8.区块 block 被大括号包裹的多行代码{ }通常与if,for,while联合使用 9.if语句 &mdash;&mdash; if (表达式){语句1}else{语句2}  { } 在语句只有一句时可以省略，但是不推荐，无{ }的只执行到第一句代码结束(逗号隔开的也为一个语句) if 表达式可以为(a=1)，但是这样会改变a的值。判断建议使用(a===1) 语句1 和语句2 都可以嵌套
+//语句1嵌套，并且省略了{ } var a=9 if (a&lt;100&gt;) if (1&lt;10&gt;) console.log(&#39;a&lt;10&#39;) 成立 //语句2 嵌套 if(a&gt;100){ }else{ if (a&lt;10&gt;){ console.log(&#39;a&lt;10&#39;) } } //语句2 嵌套省略{ } if(a&gt;100){ }else if (a&lt;10&gt;){ console."/>
 <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:500,100,300" rel="stylesheet">
 
 	<link rel="stylesheet" type="text/css" media="screen" href="/css/normalize.css" />
@@ -61,35 +47,170 @@
 		</div>
 
 		<div class="markdown">
-			<ol>
-<li>表达式</li>
+			
 
-<li><p>语句</p></li>
+<h4 id="1-表达式">1.表达式</h4>
 
-<li><p>大小写敏感</p></li>
+<h4 id="2-语句">2.语句</h4>
 
-<li><p>空格 不影响断句即可</p></li>
+<h4 id="3-大小写敏感">3.大小写敏感</h4>
 
-<li><p>回车  return 后面不可以加回车，否则会返回undefined</p></li>
+<h4 id="4-空格-没有实际意义-不影响断句即可">4.空格 没有实际意义，不影响断句即可</h4>
 
-<li><p>标识符</p>
+<h4 id="5-回车-大部分没有意义-但是return-后面不可以加回车-否则会返回undefined">5.回车 大部分没有意义，但是return 后面不可以加回车，否则会返回undefined</h4>
+
+<h4 id="6-标识符">6.标识符</h4>
 
 <ul>
-<li>第一个字母：Unicode 编码字符，$ _或者中文</li>
+<li>第一个字母：Unicode 编码字母，$ 或 _ 或中文</li>
 <li>第二个字母：上面所有内容和数字</li>
-</ul></li>
+</ul>
 
-<li><p>注释 : // &mdash;&mdash;单行注释   /*  */ &mdash;&mdash;多行注释</p>
+<h4 id="7-注释-单行注释-多行注释">7.注释 : // &mdash;&mdash;单行注释  ； /*  */ &mdash;&mdash;多行注释</h4>
 
 <ul>
 <li>踩坑注释</li>
 <li>为什么代码会写得这么奇怪，遇到了什么bug</li>
-</ul></li>
+</ul>
 
-<li><p>区块 block 被大括号包裹的多行代码{ }通常与if和for联合使用</p></li>
+<h4 id="8-区块-block-被大括号包裹的多行代码-通常与if-for-while联合使用">8.区块 block 被大括号包裹的多行代码{ }通常与if,for,while联合使用</h4>
 
-<li><p>if语句</p></li>
+<h4 id="9-if语句-if-表达式-语句1-else-语句2">9.if语句 &mdash;&mdash; if (表达式){语句1}else{语句2}</h4>
+
+<ul>
+<li>{ } 在语句只有一句时可以省略，但是不推荐，无{ }的只执行到第一句代码结束(逗号隔开的也为一个语句)</li>
+<li>if 表达式可以为(a=1)，但是这样会改变a的值。判断建议使用(a===1)</li>
+
+<li><p>语句1 和语句2 都可以嵌套</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">//语句1嵌套，并且省略了{ }
+var a=9
+if (a&lt;100&gt;)
+if (1&lt;10&gt;)
+console.log(&#39;a&lt;10&#39;)
+成立    
+//语句2 嵌套
+if(a&gt;100){
+}else{
+if (a&lt;10&gt;){
+    console.log(&#39;a&lt;10&#39;)
+ }
+}    
+//语句2 嵌套省略{ }
+if(a&gt;100){
+}else if (a&lt;10&gt;){
+ console.log(&#39;a&lt;10&#39;)
+}else{
+}
+// 缩进
+if(a = 1)
+console.log(&#39;a&#39;)
+console.log(&#39;a=9&#39;) //{}省略，只执行第一句
+
+if(a==9)
+console.log(&#39;a=1&#39;),console.log(&#39;a!=1&#39;)   //都执行</pre></div></li>
+</ul>
+
+<h4 id="10-几个表达式">10. 几个表达式</h4>
+
+<ol>
+<li>问号冒号表达式:表达式1？语句1:语句2 &mdash;&mdash; 例子 a&gt;b?a:b(求大值)</li>
+<li>&amp;&amp; 短路逻辑 A &amp;&amp; B &amp;&amp; C &amp;&amp; D&mdash;&mdash;取第一个假值或者D,并不会取true 或者false</li>
+<li>|| 短路逻辑  A &amp;&amp; B &amp;&amp; C &amp;&amp; D&mdash;&mdash;取第一个真值或者D,并不会取true 或者false</li>
 </ol>
+
+<h4 id="11-switch语句">11.switch语句</h4>
+
+<p>首先设置表达式 n（通常是一个变量）。随后表达式的值会与结构中的每个 case 的值做比较。如果存在匹配，则与该 case 关联的代码块会被执行。请使用 break 来阻止代码自动地向下一个 case 运行。
+大部分时间不可以省略break，少部分可以利用break</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">switch (n){
+    case 1:星期一
+      break;
+    case 2:星期二
+      break;
+    case 3:星期三
+      break;
+    case 4:星期四
+      break;
+    case 5:星期五
+      break;
+    case 6:星期六
+      break;
+    case 7:星期日
+      break;  
+    default: 
+      break;     
+}
+// 同时判断两种情况
+switch(n){
+    case 1:
+    case 3:
+      console.log(&#39;单数&#39;)
+      break;
+    case 2:
+    case 4:
+      console.log(&#39;双数&#39;)  
+      break;
+}</pre></div>
+<h4 id="12-while循环-while-表达式-语句">12.while循环&mdash;&mdash;while(表达式){语句}</h4>
+
+<ol>
+<li>判断表达式真假</li>
+<li>当表达式为真，执行语句然后再判断表达式真</li>
+<li>当表达式为假跳出循环</li>
+<li>do{语句}while(表达式)</li>
+
+<li><p>do/while 循环是 while 循环的变体。该循环会在检查条件是否为真之前执行一次代码块，然后如果条件为真的话，就会重复这个循环。</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">//以下是一个死循环，因为浮点数不精确
+var a=0.1
+while(a!==1){
+console.log(a)
+a+=0.1
+}</pre></div>
+<h4 id="13-for-循环-for-语句1-表达式-语句3-循环体">13. for 循环&mdash;&mdash;for(语句1；表达式；语句3){循环体}</h4>
+
+<ol>
+<li>先执行语句1，初始化</li>
+<li>判断表达式2真假</li>
+<li>如果为真，执行循环体，再执行语句3</li>
+
+<li><p>如果为假，退出循环</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">var d= new Date();
+for(var i=0;i&lt;5;i++){
+setTimeout(function(){console.log(d+&#39;i=&#39;+i)},1000)
+}
+//结果
+Wed Sep 11 2019 22:57:27 GMT+0800 (中国标准时间)i=5
+Wed Sep 11 2019 22:57:27 GMT+0800 (中国标准时间)i=5
+Wed Sep 11 2019 22:57:27 GMT+0800 (中国标准时间)i=5
+Wed Sep 11 2019 22:57:27 GMT+0800 (中国标准时间)i=5
+Wed Sep 11 2019 22:57:27 GMT+0800 (中国标准时间)i=5
+
+var d= new Date();
+for(let i=0;i&lt;5;i++){
+setTimeout(function(){console.log(d+&#39;i=&#39;+i)},1000)
+}
+//结果
+Wed Sep 11 2019 23:05:47 GMT+0800 (中国标准时间)i=0
+Wed Sep 11 2019 23:05:47 GMT+0800 (中国标准时间)i=1
+Wed Sep 11 2019 23:05:47 GMT+0800 (中国标准时间)i=2
+Wed Sep 11 2019 23:05:47 GMT+0800 (中国标准时间)i=3
+Wed Sep 11 2019 23:05:47 GMT+0800 (中国标准时间)i=4</pre></div></li>
+</ol></li>
+</ol>
+
+<h4 id="14-break和continue">14.break和continue</h4>
+
+<ul>
+<li>break跳过当前循环</li>
+<li>continue 跳过本次循环</li>
+</ul>
+
+<h4 id="15-label">15.label</h4>
+
+<ul>
+<li>foo: {console.log(1);break foo;console.log(&lsquo;不输出&rsquo;);}console.log(2);</li>
+<li>{foo: 1}&mdash;表示一个label,不是一个对象，当a={foo: 1}才是一个对象，chorme浏览器句末加分号;</li>
+</ul>
 
 		</div><div id="disqus_thread"></div>
 <script type="text/javascript">
