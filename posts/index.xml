@@ -17,7 +17,9 @@
       <pubDate>Mon, 09 Sep 2019 21:26:03 +0800</pubDate>
       
       <guid>http://example.org/posts/javascript%E5%85%A5%E9%97%A8/</guid>
-      <description>1.表达式 2.语句 3.大小写敏感 4.空格 没有实际意义，不影响断句即可 5.回车 大部分没有意义，但是return 后面不可以加回车，否则会返回undefined 6.标识符  第一个字母：Unicode 编码字母，$ 或 _ 或中文 第二个字母：上面所有内容和数字  7.注释 : // &amp;mdash;&amp;mdash;单行注释 ； /* */ &amp;mdash;&amp;mdash;多行注释  踩坑注释 为什么代码会写得这么奇怪，遇到了什么bug  8.区块 block 被大括号包裹的多行代码{ }通常与if,for,while联合使用 9.if语句 &amp;mdash;&amp;mdash; if (表达式){语句1}else{语句2}  { } 在语句只有一句时可以省略，但是不推荐，无{ }的只执行到第一句代码结束(逗号隔开的也为一个语句) if 表达式可以为(a=1)，但是这样会改变a的值。判断建议使用(a===1) 语句1 和语句2 都可以嵌套
+      <description>1.表达式 1 + 3叫做表达式（expression），指一个为了得到返回值的计算式
+2.语句 语句（statement）是为了完成某种任务而进行的操作，例如一行赋值语句。语句和表达式的区别在于，前者主要为了进行某种操作，一般情况下不需要返回值；后者则是为了得到返回值，一定会返回一个值。
+3.大小写敏感 4.空格 没有实际意义，不影响断句即可 5.回车 大部分没有意义，但是return 后面不可以加回车，否则会返回undefined 6.标识符  第一个字母：Unicode 编码字母，$ 或 _ 或中文 第二个字母：上面所有内容和数字  7.注释 : // &amp;mdash;&amp;mdash;单行注释 ； /* */ &amp;mdash;&amp;mdash;多行注释  踩坑注释 为什么代码会写得这么奇怪，遇到了什么bug  8.区块 block 被大括号包裹的多行代码{ }通常与if,for,while联合使用 9.if语句 &amp;mdash;&amp;mdash; if (表达式){语句1}else{语句2}  { } 在语句只有一句时可以省略，但是不推荐，无{ }的只执行到第一句代码结束(逗号隔开的也为一个语句) if 表达式可以为(a=1)，但是这样会改变a的值。判断建议使用(a===1) 语句1 和语句2 都可以嵌套
 //语句1嵌套，并且省略了{ } var a=9 if (a&amp;lt;100&amp;gt;) if (1&amp;lt;10&amp;gt;) console.log(&amp;#39;a&amp;lt;10&amp;#39;) 成立 //语句2 嵌套 if(a&amp;gt;100){ }else{ if (a&amp;lt;10&amp;gt;){ console.log(&amp;#39;a&amp;lt;10&amp;#39;) } } //语句2 嵌套省略{ } if(a&amp;gt;100){ }else if (a&amp;lt;10&amp;gt;){ console.</description>
     </item>
     
