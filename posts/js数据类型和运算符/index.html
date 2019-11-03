@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>JS数据类型 - 郭郭的博客</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="JS数据类型" />
+<meta property="og:description" content="数字 与 字符串  数字与字符串的区别
+ 数字是数字，字符串是字符串，要严谨 数字可以加减乘除，字符串不可以 字符串能用来表示电话号码，数字不行 JS中数字是用64位浮点数形式储存的，字符串是用类似UTF8形式储存的(UCS2)  编码方式
+ 48-57表示 1-9 数字 65-90 表示 A-Z 97-122 表示 a-z  编码发展
+ 国标局 GB2312 0000-FFFF 16位 ，两个字节，无法表示生僻字，日韩文 微软出了 GBK 国标扩 国标局 GB18030 不兼容GBK 万国码 Unicode 收录13万多字符，全世界通用 ，三个字节以上 UTF-8 最少可用8位存一个字符   布尔值 boolean false true  得到布尔值的三个方法  否定运算 !value 相等运算 == != === !== 比较运算 &gt; &gt;= &lt; &lt;=  5个falsy值 :相当于false 但是又不是false . null undefined 0 NaN &ldquo;  数字number  写法：整数 小数 科学计数 八进制 十六进制 二进制 特殊值:  &#43;0 0 -0 1&frasl;0 =infinity 1/&#43;0 =infinity 1/-0 =-infinity infinity &#43;infinity -infinity NaN 0/0=NaN not a number 是一个数字 NaN==NaN is false  64位浮点数  符号占一位 (正0，负1) 指数占11位(-1023-1024) 有效数字占 52位(开头的1省略)" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/js%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E8%BF%90%E7%AE%97%E7%AC%A6/" />
+<meta property="article:published_time" content="2019-09-16T19:36:33+08:00" />
+<meta property="article:modified_time" content="2019-09-16T19:36:33+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="JS数据类型"/>
+<meta name="twitter:description" content="数字 与 字符串  数字与字符串的区别
+ 数字是数字，字符串是字符串，要严谨 数字可以加减乘除，字符串不可以 字符串能用来表示电话号码，数字不行 JS中数字是用64位浮点数形式储存的，字符串是用类似UTF8形式储存的(UCS2)  编码方式
+ 48-57表示 1-9 数字 65-90 表示 A-Z 97-122 表示 a-z  编码发展
+ 国标局 GB2312 0000-FFFF 16位 ，两个字节，无法表示生僻字，日韩文 微软出了 GBK 国标扩 国标局 GB18030 不兼容GBK 万国码 Unicode 收录13万多字符，全世界通用 ，三个字节以上 UTF-8 最少可用8位存一个字符   布尔值 boolean false true  得到布尔值的三个方法  否定运算 !value 相等运算 == != === !== 比较运算 &gt; &gt;= &lt; &lt;=  5个falsy值 :相当于false 但是又不是false . null undefined 0 NaN &ldquo;  数字number  写法：整数 小数 科学计数 八进制 十六进制 二进制 特殊值:  &#43;0 0 -0 1&frasl;0 =infinity 1/&#43;0 =infinity 1/-0 =-infinity infinity &#43;infinity -infinity NaN 0/0=NaN not a number 是一个数字 NaN==NaN is false  64位浮点数  符号占一位 (正0，负1) 指数占11位(-1023-1024) 有效数字占 52位(开头的1省略)"/>
+<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:500,100,300" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" media="screen" href="/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" /><script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script><script src="/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper post">
+		<div class="header">
+	<h1 class="site-title">郭郭的博客</h1>
+	<div class="site-description"><h2></h2><nav class="nav social">
+			<ul class="flat"><a href="https://github.com/vividvilla/ezhil" title="Github"><i data-feather="github"></i></a><a href="https://twitter.com/gohugoio" title="Twitter"><i data-feather="twitter"></i></a></ul>
+		</nav>
+	</div>
+
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="">我的博客</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
+
+
+		<div class="post-header">
+			<h1 class="title">JS数据类型</h1>
+			<div class="meta">Posted at &mdash; Sep 16, 2019</div>
+		</div>
+
+		<div class="markdown">
+			
+
+<h4 id="数字-与-字符串">数字 与 字符串</h4>
+
+<ol>
+<li><p>数字与字符串的区别</p>
+
+<ul>
+<li>数字是数字，字符串是字符串，要严谨</li>
+<li>数字可以加减乘除，字符串不可以</li>
+<li>字符串能用来表示电话号码，数字不行</li>
+<li>JS中数字是用64位浮点数形式储存的，字符串是用类似UTF8形式储存的(UCS2)</li>
+</ul></li>
+
+<li><p>编码方式</p>
+
+<ul>
+<li>48-57表示 1-9 数字</li>
+<li>65-90 表示 A-Z</li>
+<li>97-122 表示 a-z</li>
+</ul></li>
+
+<li><p>编码发展</p>
+
+<ul>
+<li>国标局 GB2312 0000-FFFF 16位 ，两个字节，无法表示生僻字，日韩文</li>
+<li>微软出了 GBK 国标扩</li>
+<li>国标局 GB18030 不兼容GBK</li>
+<li>万国码 Unicode 收录13万多字符，全世界通用 ，三个字节以上</li>
+<li>UTF-8 最少可用8位存一个字符</li>
+</ul></li>
+</ol>
+
+<h4 id="布尔值-boolean-false-true">布尔值 boolean  false true</h4>
+
+<ol>
+<li>得到布尔值的三个方法
+
+<ul>
+<li>否定运算 !value</li>
+<li>相等运算 == != === !==</li>
+<li>比较运算 &gt; &gt;= &lt; &lt;=</li>
+</ul></li>
+<li>5个falsy值 :相当于false 但是又不是false
+. null undefined 0 NaN &ldquo;</li>
+</ol>
+
+<h4 id="数字number">数字number</h4>
+
+<ol>
+<li>写法：整数 小数 科学计数 八进制 十六进制 二进制</li>
+<li>特殊值:
+
+<ol>
+<li>+0 0 -0 <sup>1</sup>&frasl;<sub>0</sub> =infinity 1/+0 =infinity 1/-0 =-infinity</li>
+<li>infinity +infinity -infinity</li>
+<li>NaN 0/0=NaN not a number 是一个数字 NaN==NaN is false</li>
+</ol></li>
+<li>64位浮点数
+
+<ul>
+<li>符号占一位 (正0，负1)</li>
+<li>指数占11位(-1023-1024)</li>
+<li>有效数字占 52位(开头的1省略)<br /></li>
+<li>可以储存最大值 Number.Max_value</li>
+<li>JS的精度  二进制可以存52+1个有效数字即十进制最多存15-16，</li>
+</ul></li>
+</ol>
+
+<h4 id="字符串-string">字符串 string</h4>
+
+<ol>
+<li>储存机制 JS使用UTF-8 定长的两个字节存储</li>
+<li>写法 单引号&rsquo;hello&rsquo;，双引号&rdquo;hello&rdquo; ，反引号<code>hello</code></li>
+<li>转义:
+
+<ul>
+<li>字符串内含有引号  &lsquo;It&rsquo;\s ok&rsquo;,&ldquo;It&rsquo;s ok &ldquo;</li>
+<li>\n 表示换行</li>
+<li>\ 表示 <br /></li>
+<li>\r 表示会和</li>
+<li>\t 表示tab制表符</li>
+<li>\uFFFF 表示对应的Unicode字符</li>
+<li>\xFF 表示前256个Unicode字符</li>
+</ul></li>
+<li>多行字符串
+
+<ul>
+<li>反引号 直接换行即可</li>
+</ul></li>
+<li>属性
+
+<ul>
+<li>string.length 转义符号不算一个</li>
+<li>string[index]  从林开始</li>
+</ul></li>
+<li>base64转码
+
+<ul>
+<li>window.atob Base64编码的字符串转为正常字符串转码</li>
+<li>window.btoa 正常字符串转码为转Base64编码的字符串</li>
+</ul></li>
+</ol>
+
+<h4 id="null-undefined-js的两个空值">null &amp;  undefined  &mdash;JS的两个空值</h4>
+
+<ol>
+<li>如果一个变量声明了，但是没有复制，默认值就是undefined</li>
+<li>如果一个函数 ，没有写return ,默认返回值是undefined</li>
+<li>前端程序员习惯把对象的空值写为null，非对象的空值写为undefined，但这不是规范</li>
+</ol>
+
+<h4 id="符号-symbol">符号 symbol</h4>
+
+<h4 id="对象object-包括-数组-日期">对象object(包括 数组 日期)</h4>
+
+<h4 id="变量声明-声明时既指定了值-又指定了类型">变量声明 声明时既指定了值，又指定了类型</h4>
+
+<ol>
+<li>三种声明方式
+
+<ul>
+<li>var a = 1 过时的，不好用的方式</li>
+<li>let a = 1  新的更合理的方式</li>
+<li>const a =1 声明是必须赋值，且不能更改</li>
+<li>a = 1 赋值方式，或者会在未声明变量时是会变全局变量</li>
+</ul></li>
+<li>let
+
+<ul>
+<li>遵循块作用域 ，使用范围不能超出块级作用域{}</li>
+<li>在同一个作用域内不能重复声明</li>
+<li>声明时可以赋值，也可以不赋值</li>
+<li>必须先声明再使用，否则会报错</li>
+<li>全局声明的let变量，不会变成window 的属性</li>
+<li>for 循环内使用let</li>
+</ul></li>
+
+<li><p>const</p>
+
+<ul>
+<li>声明时必须赋值，赋值后不能更改</li>
+
+<li><p>其它和let一致</p>
+
+<h4 id="类型转换">类型转换</h4></li>
+</ul></li>
+
+<li><p>数字转为字符串</p>
+
+<ul>
+<li>String() bug :位数太多会变成科学计数法</li>
+<li>n + &ldquo;</li>
+</ul></li>
+
+<li><p>字符串转为Number</p>
+
+<ul>
+<li>Number(s)</li>
+<li>s - 0</li>
+<li>+ s<br /></li>
+<li>parseInt(&lsquo;123&rsquo;)  ==  变成整数</li>
+</ul></li>
+
+<li><p>转为布尔值</p>
+
+<ul>
+<li>Boolean(1)</li>
+<li>!!(1)</li>
+</ul></li>
+
+<li><p>任何值转为string</p>
+
+<ul>
+<li>.toString()</li>
+<li>1.toString()会报错，因为默认为小数，可以改为1..toString() 或者 (1).toString 1 .toString()</li>
+</ul></li>
+</ol>
+
+		</div><div id="disqus_thread"></div>
+<script type="text/javascript">
+	(function () {
+		
+		
+		if (window.location.hostname == "localhost")
+			return;
+
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		var disqus_shortname = 'localhost';
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+		Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div><a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-123-45', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<script>feather.replace()</script>
+</body>
+</html>

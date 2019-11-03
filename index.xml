@@ -6,18 +6,85 @@
     <description>Recent content on 郭郭的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-Hans</language>
-    <lastBuildDate>Sun, 15 Sep 2019 16:40:05 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 02 Nov 2019 21:40:17 +0800</lastBuildDate>
     
 	<atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>CSS动画</title>
-      <link>http://example.org/posts/css%E5%8A%A8%E7%94%BB/</link>
-      <pubDate>Sun, 15 Sep 2019 16:40:05 +0800</pubDate>
+      <title>异步&amp;Promise</title>
+      <link>http://example.org/posts/%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5/</link>
+      <pubDate>Sat, 02 Nov 2019 21:40:17 +0800</pubDate>
       
-      <guid>http://example.org/posts/css%E5%8A%A8%E7%94%BB/</guid>
-      <description>1.浏览器渲染过程  根据HTML构建 DOM 树 根据 CSS 构建 CSSOM 树 将 DOM 与 CSSOM 合并成一个渲染树 根据渲染树布局Layout(文档流、盒模型、节点的大小及位置) Painting 将各个节点绘制到屏幕上（边框颜色、文字颜色、阴影等） Composite 根据层叠关系展示页面  2.JS更新样式的三种方式  1-6 过程全部重新走一遍&amp;mdash;-移动节点(div.remove()) 跳过Layout 布局&amp;mdash;-更改背景颜色 跳过 Layout 布局和 Painting 绘制&amp;mdash;-改变transform  每个属性触发什么流程，可以参考 https://csstriggers.com/ 3.CSS动画优化  坚持使用 transform 和 opacity 属性更改来实现动画,除此之外更改任何属性始终都会触发绘制，绘制通常是像素管道中开销最大的部分；应尽可能避免绘制，通过层的提升和动画的编排来减少绘制区域 使用 will-change 或 translateZ 提升移动的元素 避免过度使用提升规则；各层都需要内存和管理开销 避免使用 setTimeout 或 setInterval，请使用 requestAnimationFrame  4.transform  移动 translate(x,y)，translateX|Y|Z(x) ,translate3d(x,y,z) &amp;mdash;-x值可以为100px或者50% 旋转 rotate(angle)， rotateX|Y|Z(angle)， rotate3d(x,y,z,angle)&amp;mdash;-90deg,0.25turn,1.57rad 缩放 scale(x,y),scale3d(x,y,z),scaleX|Y|Z(x) 倾斜 skew(x-angle,y-angle),skewX|Y(angle)  注：  inline 元素不支持 transform，需要先转为block 3D 转换 父容器需要设置 perspective(n) translate(-50%,-50%)，可以做绝对定位元素的居中 transform:scale(1.</description>
+      <guid>http://example.org/posts/%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5/</guid>
+      <description>同步与异步  同步 能直接拿到结果 异步 不能直接拿到结果，通过轮询或者回调，以下三种经常会用到回调  1.setTimeout 2.AJAX (XMLHttpRequest) ,可以设置成同步 request.open(&amp;lsquo;GET&amp;rsquo;,url,false),但是非常不推荐 3.AddEventListener   异步例子 function 摇骰子(){ setTimeout(()=&amp;gt;{ return parseInt(Math.random()*6+1) },1000) // return undefined  }  获取异步结果 一、一个结果 function 摇骰子(fn){ setTimeout(()=&amp;gt;{ fn(parseInt(Math.random()*6+1)) },1000) } function f1(x){console.log(x)} 摇骰子(f1) //以上可以简化 摇骰子(x=&amp;gt;{console.log(x)}) //再简化 注意只有参数一致才能进行此步简化 摇骰子(console.log) const array =[&amp;#39;1&amp;#39;,&amp;#39;2&amp;#39;,&amp;#39;3&amp;#39;].map(parseInt) console.log(array)//[1,NAN,NAN] //正确的写法 const array =[&amp;#39;1&amp;#39;,&amp;#39;2&amp;#39;,&amp;#39;3&amp;#39;].map((item,i,arr)=&amp;gt;{ return parseInt(item) })  二、两个结果  方法一： 回调接受两个参数
+fs.readFile(&amp;#39;./1.text&amp;#39;,(error,data)=&amp;gt;{ if(error){console.log(&amp;#39;失败&amp;#39;);return} console.log(data)//成功 })  方法二： 设置两个回调参数
+ajax(&amp;#39;GET&amp;#39;,&amp;#39;./1.json&amp;#39;,data=&amp;gt;{},error=&amp;gt;{}) ajax(&amp;#39;GET&amp;#39;,&amp;#39;./1.json&amp;#39;,{ success:()=&amp;gt;{}, failed:()=&amp;gt;{} }  以上两个方法的不足</description>
+    </item>
+    
+    <item>
+      <title>算法入门</title>
+      <link>http://example.org/posts/%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8/</link>
+      <pubDate>Tue, 15 Oct 2019 19:09:05 +0800</pubDate>
+      
+      <guid>http://example.org/posts/%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8/</guid>
+      <description>取两个值中间的最小值  数据结构&amp;mdash;-数组 编程&amp;mdash;-if else Js 内置API Math.min(1,2),Math.min.call(1,2),Math.min.apply(null,[1,2])  Math 是一个对象，但是首字母大写了    初始代码版本
+let minOf2 =(numbers) =&amp;gt;{ if (numbers[0]&amp;lt;numbers[1]){ return numbers[0] }else{ return numbers[1] } } 代码优化第一次&amp;mdash;冒号问号表达式
+let minOf2 =numbers=&amp;gt; numbers[0]&amp;lt;numbers[1]?numbers[0]:numbers[1]  代码优化第二次&amp;ndash;析构赋值
+let minOf2 =[a,b]=&amp;gt;a&amp;lt;b?a:b //调用 小白调用法：minOf2([3,6]) 大神调用法：minOf2.call(null,[1,2])  利用递归实现查找最小值 let min =(numbers)=&amp;gt;{ if(numbers.length&amp;gt;2){ return min( [numbers[0],min(numbers.slice(1))] ) } else{ return Math.min.apply(null,numbers) } } 利用递归实现多个值的数组从小到大排列，即sort函数 sortAll([6,7,8,3,5]) //坑 参数未输入数组，reverse()一直报错 // concat的需要作用在数组上，然后[minNumber] let sortAll = (numbers)=&amp;gt;{ if(numbers.length&amp;gt;2){ let minNumber = min(numbers) let minIndex = numbers.</description>
+    </item>
+    
+    <item>
+      <title>JS对象的类</title>
+      <link>http://example.org/posts/js%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%B1%BB/</link>
+      <pubDate>Sat, 21 Sep 2019 21:26:03 +0800</pubDate>
+      
+      <guid>http://example.org/posts/js%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%B1%BB/</guid>
+      <description> 构造函数 let obj = New X()  自动创建了一个空对象 自动为空对象关联原型，原型地址指定为X。prototype 自动将空对象作为this关键字运行的构造函数 自动return this  构造函数本身X  X函数负责给对象本身添加属性 X.prototype 对象负责添加新对象的共有属性（X.prototype 存着原型的地址）  如何确定一个对象的原型是什么？  对象.proto===其构造函数.prototype Object.prototype === null,Object 是一个根对象，没有原型  代码规范  构造函数 首字母大写 被构造出的对象首字母小写 构造函数名称一般使用名词，其它函数名称使用动词开头   window 是由Window构造的 window.Object 是 Function 构造的 浏览器构造了Function 并且指定它的构造者就是自己  Class新语法 class Square{ constructor(width){ this.width =width getArea(){return this.width*this.width} } getLength(){return this.width*4} }</description>
+    </item>
+    
+    <item>
+      <title>JS对象的基本用法</title>
+      <link>http://example.org/posts/js%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</link>
+      <pubDate>Fri, 20 Sep 2019 21:26:03 +0800</pubDate>
+      
+      <guid>http://example.org/posts/js%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</guid>
+      <description>##JS 对象基本用法
+声明对象的方式  let obj ={&#39;name&#39;:&#39;frank&#39;,&#39;age&#39;:18} let obj =new Object({&#39;name&#39;:&#39;frank&#39;,&#39;age&#39;:18}) console.log({&#39;name&#39;:&#39;frank&#39;,&#39;age&#39;:18})&amp;ndash;不声明直接使用  注意  键名是字符串，不是标识符，可以包含任意字符 引号可以省略，省略之后只能写标识符&amp;ndash;键名有空格是不可以省略 就算引号省略了，键名还是字符串 obj[key]:value &amp;mdash;-[]号表示属性名是变量，先求值，再转字符串 除了字符串，Symbol也可以做属性名
+奇怪的属性值 所有属性名都会自动变成字符串
+let obj ={ 1:&amp;#39;a&amp;#39;, 1e2:true,//会自动计算后再转为字符串 0XXF:false //会自动转化为10进制再转为字符串}  隐藏属性   JS里每个对象都有一个隐藏属性 这个隐藏属性储存着其共有属性组成的对象的地址 这个共有属性组成的对象叫做原型 也就是说隐藏属性储存着原型的地址  对象的增删改查 删  obj.name = undefined &amp;mdash;只删除属性值 delete obj.name &amp;mdash;删除属性名和属性值 delete obj[&amp;lsquo;name&amp;rsquo;] &amp;mdash;删除属性名和属性值 &amp;lsquo;name&amp;rsquo; in obj &amp;mdash; 检查obj是否含有属性名 &amp;lsquo;name&amp;rsquo; in obj &amp;amp;&amp;amp; obj.xxx ===undefined &amp;mdash;有属性名，但是没有值  查  读取对象自身所有的属性 Object.keys(obj) 读取对象的属性值 Object.</description>
+    </item>
+    
+    <item>
+      <title>JS函数的执行时机</title>
+      <link>http://example.org/posts/js-%E5%87%BD%E6%95%B0%E7%9A%84%E6%89%A7%E8%A1%8C%E6%97%B6%E6%9C%BA/</link>
+      <pubDate>Thu, 19 Sep 2019 21:26:03 +0800</pubDate>
+      
+      <guid>http://example.org/posts/js-%E5%87%BD%E6%95%B0%E7%9A%84%E6%89%A7%E8%A1%8C%E6%97%B6%E6%9C%BA/</guid>
+      <description> 1.函数需要经过调用后才能执行 2.函数内涉及到的变量，需要确定调用前变量的数值，不一定是初始值，如果调用后更改变量值也不会影响到函数的返回值 3. 如果函数内部涉及到了setTimeout(()=&amp;gt;{},0),需要先执行for 循环，然后再执行setTimeout 4.for循环 &amp;amp; setTimeout 一起使用时的机制 let i=0 for(i=0;i&amp;lt;6;i++){ setTimeout(()=&amp;gt;{console.log(i)},0) }//打印出6个6 //因为setTimeout()内的函数会在for循环结束之后再执行，且每次循环都会有一个setTimeOut() //所以i=6时，循环结束，一起打印出6个6。for(let i=0;i&amp;lt;6;i++){ setTimeout(()=&amp;gt;{console.log(i)},0) }//打印出0-5,因为JS在for 和let 一起用的时候每次循环会创建一个i//打印 0-5的其它方法 let i=0; while (i&amp;lt;6) { console.log(i) i++ }</description>
+    </item>
+    
+    <item>
+      <title>JS运算符</title>
+      <link>http://example.org/posts/js%E8%BF%90%E7%AE%97%E7%AC%A6/</link>
+      <pubDate>Wed, 18 Sep 2019 21:26:03 +0800</pubDate>
+      
+      <guid>http://example.org/posts/js%E8%BF%90%E7%AE%97%E7%AC%A6/</guid>
+      <description>一、算术运算符 Number 运算  加减乘除 余数 %  JS中-1%7是错误的先计算1%7然后再变成负数，得出-1  指数** 自增自减 a++ / ++a / a&amp;ndash; / -aa （尽量少用）  a++表达式的值是a,++a的表达式的值是a+1 a&amp;ndash;表达式的值是a,&amp;ndash;a的表达式的值是a-1  求值运算符号 +a 不是取正值 负数运算符 -a  String 运算  连接运算符 + &amp;lsquo;12&amp;rsquo;+&amp;lsquo;45&amp;rsquo; =&amp;lsquo;1245&amp;rsquo;  只支持+法运算，其它运算不支持 如果加号中运算中有非字符串，则转换为字符串，再相加,如果字符串-数字，则字符串转为数字，再相减（不同类型不要运算）   二、比较运算符  &amp;gt; &amp;lt; &amp;gt;= &amp;lt;= ==
+ 模糊相等,经常会自动进行类型转换(不推荐使用) 0==[],0==&amp;lsquo;0&amp;rsquo;,0==&amp;rsquo;\t&amp;rsquo; tab字符 , 但是[]!=&amp;lsquo;0&amp;rsquo;!=&amp;rsquo;\t&amp;rsquo;
+// 自相矛盾 var a =[] if(a){console.log(&amp;#39;a&amp;#39;)} else{console.log(&amp;#39;a不等于true&amp;#39;)}//a var a =[] if(a==true){console.log(&amp;#39;a&amp;#39;)} else{console.log(&amp;#39;a不等于true&amp;#39;)}//a不等于true  !=</description>
+    </item>
+    
+    <item>
+      <title>JS数据类型</title>
+      <link>http://example.org/posts/js%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E8%BF%90%E7%AE%97%E7%AC%A6/</link>
+      <pubDate>Mon, 16 Sep 2019 19:36:33 +0800</pubDate>
+      
+      <guid>http://example.org/posts/js%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E8%BF%90%E7%AE%97%E7%AC%A6/</guid>
+      <description>数字 与 字符串  数字与字符串的区别
+ 数字是数字，字符串是字符串，要严谨 数字可以加减乘除，字符串不可以 字符串能用来表示电话号码，数字不行 JS中数字是用64位浮点数形式储存的，字符串是用类似UTF8形式储存的(UCS2)  编码方式
+ 48-57表示 1-9 数字 65-90 表示 A-Z 97-122 表示 a-z  编码发展
+ 国标局 GB2312 0000-FFFF 16位 ，两个字节，无法表示生僻字，日韩文 微软出了 GBK 国标扩 国标局 GB18030 不兼容GBK 万国码 Unicode 收录13万多字符，全世界通用 ，三个字节以上 UTF-8 最少可用8位存一个字符   布尔值 boolean false true  得到布尔值的三个方法  否定运算 !value 相等运算 == != === !== 比较运算 &amp;gt; &amp;gt;= &amp;lt; &amp;lt;=  5个falsy值 :相当于false 但是又不是false . null undefined 0 NaN &amp;ldquo;  数字number  写法：整数 小数 科学计数 八进制 十六进制 二进制 特殊值:  +0 0 -0 1&amp;frasl;0 =infinity 1/+0 =infinity 1/-0 =-infinity infinity +infinity -infinity NaN 0/0=NaN not a number 是一个数字 NaN==NaN is false  64位浮点数  符号占一位 (正0，负1) 指数占11位(-1023-1024) 有效数字占 52位(开头的1省略)</description>
     </item>
     
     <item>
@@ -56,6 +123,15 @@ Javascript的爆发 Chrome 的 V8 引擎极大的提升了 JS 代码的运行效
     </item>
     
     <item>
+      <title>CSS动画</title>
+      <link>http://example.org/posts/css%E5%8A%A8%E7%94%BB/</link>
+      <pubDate>Mon, 26 Aug 2019 16:40:05 +0800</pubDate>
+      
+      <guid>http://example.org/posts/css%E5%8A%A8%E7%94%BB/</guid>
+      <description>1.浏览器渲染过程  根据HTML构建 DOM 树 根据 CSS 构建 CSSOM 树 将 DOM 与 CSSOM 合并成一个渲染树 根据渲染树布局Layout(文档流、盒模型、节点的大小及位置) Painting 将各个节点绘制到屏幕上（边框颜色、文字颜色、阴影等） Composite 根据层叠关系展示页面  2.JS更新样式的三种方式  1-6 过程全部重新走一遍&amp;mdash;-移动节点(div.remove()) 跳过Layout 布局&amp;mdash;-更改背景颜色 跳过 Layout 布局和 Painting 绘制&amp;mdash;-改变transform  每个属性触发什么流程，可以参考 https://csstriggers.com/ 3.CSS动画优化  坚持使用 transform 和 opacity 属性更改来实现动画,除此之外更改任何属性始终都会触发绘制，绘制通常是像素管道中开销最大的部分；应尽可能避免绘制，通过层的提升和动画的编排来减少绘制区域 使用 will-change 或 translateZ 提升移动的元素 避免过度使用提升规则；各层都需要内存和管理开销 避免使用 setTimeout 或 setInterval，请使用 requestAnimationFrame  4.transform  移动 translate(x,y)，translateX|Y|Z(x) ,translate3d(x,y,z) &amp;mdash;-x值可以为100px或者50% 旋转 rotate(angle)， rotateX|Y|Z(angle)， rotate3d(x,y,z,angle)&amp;mdash;-90deg,0.25turn,1.57rad 缩放 scale(x,y),scale3d(x,y,z),scaleX|Y|Z(x) 倾斜 skew(x-angle,y-angle),skewX|Y(angle)  注：  inline 元素不支持 transform，需要先转为block 3D 转换 父容器需要设置 perspective(n) translate(-50%,-50%)，可以做绝对定位元素的居中 transform:scale(1.</description>
+    </item>
+    
+    <item>
       <title>CSS布局</title>
       <link>http://example.org/posts/css%E5%B8%83%E5%B1%80/</link>
       <pubDate>Sun, 25 Aug 2019 12:57:09 +0800</pubDate>
@@ -65,6 +141,19 @@ Javascript的爆发 Chrome 的 V8 引擎极大的提升了 JS 代码的运行效
 margin-left:10px;_margin-left:5px;
 或者设置：display：block；
 响应式布局  flex 布局  container  display:flex | inline-flex; flex-direction:row |column |row-reverse |column-reverse; flex-wrap:nowrap|wrap; justify-content:flex-start|flex-end|center|space-between|space-around|space-evenly; 主轴对齐方式 align-items:stretch|flex-start|flex-end|center; 次轴对齐方式 align-content:stretch|flex-start|flex-end|center|space-between|space-around 主轴多行对齐方式     items  order:num; item的显示顺序按照order从小到大显示，默认为0 flex-grow:num ; 每个item占据的空间，数字越大，空间越大 flex-shrink: num 空间不够时，数字越大，缩小的程度越大，为0时表示不会被缩小 align-self: stretch|flex-start|flex-end|center *单个item的对齐方式 *   gird 布局 小技巧 img 标签 添加背景颜色后有多余的东西，可以用vertical-align:top/middle</description>
+    </item>
+    
+    <item>
+      <title>命令行</title>
+      <link>http://example.org/posts/%E5%91%BD%E4%BB%A4%E8%A1%8C/</link>
+      <pubDate>Tue, 20 Aug 2019 22:29:46 +0800</pubDate>
+      
+      <guid>http://example.org/posts/%E5%91%BD%E4%BB%A4%E8%A1%8C/</guid>
+      <description>查  pwd &amp;mdash;-查看当前目录的绝对内容 ls &amp;mdash;-查看当前目录内容 ls 路径 &amp;mdash;-查看指定目录的内容 查看文件内容  cat 路径 head 路径 tail 路径 less 路径   增  创建 1.txt  touch 1.txt echo hi &amp;gt; 1.txt echo hihi &amp;gt;&amp;gt; 1.txt echo -2 &amp;ldquo;1\n2&amp;rdquo; &amp;gt; 1.txt  创建目录
+ mkdir a mkdir -p a/b/c  同时创建多个文件
+ touch 1.txt 2.txt  同时创建多个目录
+ mkdir -p a/b/b a/d/c  复制文件
+ cp 1.txt 2.txt  复制目录</description>
     </item>
     
     <item>

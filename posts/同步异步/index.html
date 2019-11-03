@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>异步&amp;Promise - 郭郭的博客</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="异步&amp;Promise" />
+<meta property="og:description" content="同步与异步  同步 能直接拿到结果 异步 不能直接拿到结果，通过轮询或者回调，以下三种经常会用到回调  1.setTimeout 2.AJAX (XMLHttpRequest) ,可以设置成同步 request.open(&lsquo;GET&rsquo;,url,false),但是非常不推荐 3.AddEventListener   异步例子 function 摇骰子(){ setTimeout(()=&gt;{ return parseInt(Math.random()*6&#43;1) },1000) // return undefined  }  获取异步结果 一、一个结果 function 摇骰子(fn){ setTimeout(()=&gt;{ fn(parseInt(Math.random()*6&#43;1)) },1000) } function f1(x){console.log(x)} 摇骰子(f1) //以上可以简化 摇骰子(x=&gt;{console.log(x)}) //再简化 注意只有参数一致才能进行此步简化 摇骰子(console.log) const array =[&#39;1&#39;,&#39;2&#39;,&#39;3&#39;].map(parseInt) console.log(array)//[1,NAN,NAN] //正确的写法 const array =[&#39;1&#39;,&#39;2&#39;,&#39;3&#39;].map((item,i,arr)=&gt;{ return parseInt(item) })  二、两个结果  方法一： 回调接受两个参数
+fs.readFile(&#39;./1.text&#39;,(error,data)=&gt;{ if(error){console.log(&#39;失败&#39;);return} console.log(data)//成功 })  方法二： 设置两个回调参数
+ajax(&#39;GET&#39;,&#39;./1.json&#39;,data=&gt;{},error=&gt;{}) ajax(&#39;GET&#39;,&#39;./1.json&#39;,{ success:()=&gt;{}, failed:()=&gt;{} }  以上两个方法的不足" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5/" />
+<meta property="article:published_time" content="2019-11-02T21:40:17+08:00" />
+<meta property="article:modified_time" content="2019-11-02T21:40:17+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="异步&amp;Promise"/>
+<meta name="twitter:description" content="同步与异步  同步 能直接拿到结果 异步 不能直接拿到结果，通过轮询或者回调，以下三种经常会用到回调  1.setTimeout 2.AJAX (XMLHttpRequest) ,可以设置成同步 request.open(&lsquo;GET&rsquo;,url,false),但是非常不推荐 3.AddEventListener   异步例子 function 摇骰子(){ setTimeout(()=&gt;{ return parseInt(Math.random()*6&#43;1) },1000) // return undefined  }  获取异步结果 一、一个结果 function 摇骰子(fn){ setTimeout(()=&gt;{ fn(parseInt(Math.random()*6&#43;1)) },1000) } function f1(x){console.log(x)} 摇骰子(f1) //以上可以简化 摇骰子(x=&gt;{console.log(x)}) //再简化 注意只有参数一致才能进行此步简化 摇骰子(console.log) const array =[&#39;1&#39;,&#39;2&#39;,&#39;3&#39;].map(parseInt) console.log(array)//[1,NAN,NAN] //正确的写法 const array =[&#39;1&#39;,&#39;2&#39;,&#39;3&#39;].map((item,i,arr)=&gt;{ return parseInt(item) })  二、两个结果  方法一： 回调接受两个参数
+fs.readFile(&#39;./1.text&#39;,(error,data)=&gt;{ if(error){console.log(&#39;失败&#39;);return} console.log(data)//成功 })  方法二： 设置两个回调参数
+ajax(&#39;GET&#39;,&#39;./1.json&#39;,data=&gt;{},error=&gt;{}) ajax(&#39;GET&#39;,&#39;./1.json&#39;,{ success:()=&gt;{}, failed:()=&gt;{} }  以上两个方法的不足"/>
+<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:500,100,300" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" media="screen" href="/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" /><script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script><script src="/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper post">
+		<div class="header">
+	<h1 class="site-title">郭郭的博客</h1>
+	<div class="site-description"><h2></h2><nav class="nav social">
+			<ul class="flat"><a href="https://github.com/vividvilla/ezhil" title="Github"><i data-feather="github"></i></a><a href="https://twitter.com/gohugoio" title="Twitter"><i data-feather="twitter"></i></a></ul>
+		</nav>
+	</div>
+
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="">我的博客</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
+
+
+		<div class="post-header">
+			<h1 class="title">异步&amp;Promise</h1>
+			<div class="meta">Posted at &mdash; Nov 2, 2019</div>
+		</div>
+
+		<div class="markdown">
+			
+
+<h4 id="同步与异步">同步与异步</h4>
+
+<ol>
+<li>同步 能直接拿到结果</li>
+<li>异步 不能直接拿到结果，通过轮询或者回调，以下三种经常会用到回调
+
+<ul>
+<li>1.setTimeout</li>
+<li>2.AJAX (XMLHttpRequest) ,可以设置成同步 request.open(&lsquo;GET&rsquo;,url,false),但是非常不推荐</li>
+<li>3.AddEventListener</li>
+</ul></li>
+</ol>
+
+<h5 id="异步例子">异步例子</h5>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">    <span style="color:#00f">function</span> 摇骰子(){
+      setTimeout(()=&gt;{
+          <span style="color:#00f">return</span> parseInt(Math.random()*6+1)
+      },1000)
+   <span style="color:#008000">//   return undefined
+</span><span style="color:#008000"></span>  }
+</code></pre></div>
+<h4 id="获取异步结果">获取异步结果</h4>
+
+<h4 id="一-一个结果">一、一个结果</h4>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">  <span style="color:#00f">function</span> 摇骰子(fn){
+      setTimeout(()=&gt;{
+          fn(parseInt(Math.random()*6+1))
+      },1000)
+  }
+<span style="color:#00f">function</span> f1(x){console.log(x)}
+摇骰子(f1)
+<span style="color:#008000">//以上可以简化
+</span><span style="color:#008000"></span>摇骰子(x=&gt;{console.log(x)})
+<span style="color:#008000">//再简化 注意只有参数一致才能进行此步简化
+</span><span style="color:#008000"></span>摇骰子(console.log)
+</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#00f">const</span> array =[<span style="color:#a31515">&#39;1&#39;</span>,<span style="color:#a31515">&#39;2&#39;</span>,<span style="color:#a31515">&#39;3&#39;</span>].map(parseInt)
+console.log(array)<span style="color:#008000">//[1,NAN,NAN]
+</span><span style="color:#008000">//正确的写法
+</span><span style="color:#008000"></span><span style="color:#00f">const</span> array =[<span style="color:#a31515">&#39;1&#39;</span>,<span style="color:#a31515">&#39;2&#39;</span>,<span style="color:#a31515">&#39;3&#39;</span>].map((item,i,arr)=&gt;{
+    <span style="color:#00f">return</span> parseInt(item)
+})
+</code></pre></div>
+<h4 id="二-两个结果">二、两个结果</h4>
+
+<ol>
+<li><p>方法一： 回调接受两个参数</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">fs.readFile(<span style="color:#a31515">&#39;./1.text&#39;</span>,(error,data)=&gt;{
+ <span style="color:#00f">if</span>(error){console.log(<span style="color:#a31515">&#39;失败&#39;</span>);<span style="color:#00f">return</span>}
+console.log(data)<span style="color:#008000">//成功
+</span><span style="color:#008000"></span>})
+</code></pre></div></li>
+
+<li><p>方法二： 设置两个回调参数</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">ajax(<span style="color:#a31515">&#39;GET&#39;</span>,<span style="color:#a31515">&#39;./1.json&#39;</span>,data=&gt;{},error=&gt;{})
+ajax(<span style="color:#a31515">&#39;GET&#39;</span>,<span style="color:#a31515">&#39;./1.json&#39;</span>,{
+success:()=&gt;{},
+failed:()=&gt;{}  
+}
+</code></pre></div></li>
+
+<li><p>以上两个方法的不足</p>
+
+<ul>
+<li>不够规范，名称各有不同</li>
+<li>容易出现回调地狱</li>
+<li>很难进行错误处理</li>
+</ul></li>
+</ol>
+
+<h4 id="封装-ajax函数">封装 AJAX函数</h4>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">ajax =(method,url,options) =&gt;{
+  <span style="color:#00f">const</span> {success,fail}=options
+  <span style="color:#008000">// 析构赋值 success=options.success
+</span><span style="color:#008000"></span>  <span style="color:#008000">//          fail= options.fail
+</span><span style="color:#008000"></span>  <span style="color:#00f">const</span> request =<span style="color:#00f">new</span> XMLHttpRequest
+  request.open(method,url)
+  request.onreadystatechange =()={
+    <span style="color:#00f">if</span>(request.readyState===4{
+      <span style="color:#00f">if</span>(request.status&lt;400&gt;{
+        success.call(<span style="color:#00f">null</span>,request.response)
+      })<span style="color:#00f">else</span> <span style="color:#00f">if</span>(request.status&gt;=400){
+         fail.call(<span style="color:#00f">null</span>,request,request.status)
+      }
+    })
+  }
+request.send()
+}
+ajax(<span style="color:#a31515">&#39;GET&#39;</span>,<span style="color:#a31515">&#39;/xxx&#39;</span>,{
+  success(response){},
+  fail:(request,status)=&gt;{}
+})
+</code></pre></div>
+<h4 id="promise方法改写">Promise方法改写</h4>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">ajax =(method,url,options) =&gt;{
+  <span style="color:#00f">return</span> <span style="color:#00f">new</span> Promise((resolve,fail)=&gt;{
+    <span style="color:#00f">const</span> {success,fail}=options
+    <span style="color:#00f">const</span> request =<span style="color:#00f">new</span> XMLHttpRequest
+    request.open(method,url)
+    request.onreadystatechange =()={
+    <span style="color:#00f">if</span>(request.readyState===4{
+      <span style="color:#00f">if</span>(request.status&lt;400&gt;{
+        resolve.call(<span style="color:#00f">null</span>,request.response)
+      })<span style="color:#00f">else</span> <span style="color:#00f">if</span>(request.status&gt;=400){
+         reject.call(<span style="color:#00f">null</span>,request,request.status)
+      }
+    })
+  }
+  request.send()
+  }) 
+}
+
+ajax (<span style="color:#a31515">&#39;GET&#39;</span>,<span style="color:#a31515">&#39;/xxx&#39;</span>).then(success,fail)
+<span style="color:#008000">//then的第一个参数是成功，第二个是失败
+</span><span style="color:#008000">// 只能传一个参数
+</span></code></pre></div>
+		</div><div id="disqus_thread"></div>
+<script type="text/javascript">
+	(function () {
+		
+		
+		if (window.location.hostname == "localhost")
+			return;
+
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		var disqus_shortname = 'localhost';
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+		Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div><a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-123-45', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<script>feather.replace()</script>
+</body>
+</html>
