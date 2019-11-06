@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>异步&amp;Promise - 郭郭的博客</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>异步&amp;Promise - 小郭的博客</title><meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta property="og:title" content="异步&amp;Promise" />
 <meta property="og:description" content="同步与异步  同步 能直接拿到结果 异步 不能直接拿到结果，通过轮询或者回调，以下三种经常会用到回调  1.setTimeout 2.AJAX (XMLHttpRequest) ,可以设置成同步 request.open(&lsquo;GET&rsquo;,url,false),但是非常不推荐 3.AddEventListener   异步例子 function 摇骰子(){ setTimeout(()=&gt;{ return parseInt(Math.random()*6&#43;1) },1000) // return undefined  }  获取异步结果 一、一个结果 function 摇骰子(fn){ setTimeout(()=&gt;{ fn(parseInt(Math.random()*6&#43;1)) },1000) } function f1(x){console.log(x)} 摇骰子(f1) //以上可以简化 摇骰子(x=&gt;{console.log(x)}) //再简化 注意只有参数一致才能进行此步简化 摇骰子(console.log) const array =[&#39;1&#39;,&#39;2&#39;,&#39;3&#39;].map(parseInt) console.log(array)//[1,NAN,NAN] //正确的写法 const array =[&#39;1&#39;,&#39;2&#39;,&#39;3&#39;].map((item,i,arr)=&gt;{ return parseInt(item) })  二、两个结果  方法一： 回调接受两个参数
 fs.readFile(&#39;./1.text&#39;,(error,data)=&gt;{ if(error){console.log(&#39;失败&#39;);return} console.log(data)//成功 })  方法二： 设置两个回调参数
@@ -25,7 +25,7 @@ ajax(&#39;GET&#39;,&#39;./1.json&#39;,data=&gt;{},error=&gt;{}) ajax(&#39;GET&#3
 <body>
 	<div class="container wrapper post">
 		<div class="header">
-	<h1 class="site-title">郭郭的博客</h1>
+	<h1 class="site-title">小郭的博客</h1>
 	<div class="site-description"><h2></h2><nav class="nav social">
 			<ul class="flat"><a href="https://github.com/vividvilla/ezhil" title="Github"><i data-feather="github"></i></a><a href="https://twitter.com/gohugoio" title="Twitter"><i data-feather="twitter"></i></a></ul>
 		</nav>
