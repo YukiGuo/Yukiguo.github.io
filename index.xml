@@ -6,10 +6,24 @@
     <description>Recent content on 小郭的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-Hans</language>
-    <lastBuildDate>Wed, 06 Nov 2019 21:32:12 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 07 Nov 2019 20:21:13 +0800</lastBuildDate>
     
 	<atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>JQuery入门</title>
+      <link>http://example.org/posts/jquery%E5%85%A5%E9%97%A8/</link>
+      <pubDate>Thu, 07 Nov 2019 20:21:13 +0800</pubDate>
+      
+      <guid>http://example.org/posts/jquery%E5%85%A5%E9%97%A8/</guid>
+      <description>jQuery获取元素  选择表达式可以是CSS选择器：
+$(document) //选择整个文档对象 $(&amp;#39;#myId&amp;#39;) //选择ID为myId的网页元素 $(&amp;#39;div.myClass&amp;#39;) // 选择class为myClass的div元素 $(&amp;#39;input[name=first]&amp;#39;) // 选择name属性等于first的input元素  也可以是jQuery特有的表达式：
+$(&amp;#39;a:first&amp;#39;) //选择网页中第一个a元素 $(&amp;#39;tr:odd&amp;#39;) //选择表格的奇数行 $(&amp;#39;#myForm :input&amp;#39;) // 选择表单中的input元素 $(&amp;#39;div:visible&amp;#39;) //选择可见的div元素 $(&amp;#39;div:gt(2)&amp;#39;) // 选择所有的div元素，除了前三个 $(&amp;#39;div:animated&amp;#39;) // 选择当前处于动画状态的div元素   jQuery取值和赋值  同一个函数，通过判断其参数的个数及类型，实现不同的操作（即重载）的方法来同时实现取值和赋值，常见的取值和赋值函数如下
+.html() 取出或设置html内容 .text() 取出或设置text内容 .attr() 取出或设置某个属性的值 .width() 取出或设置某个元素的宽度 .height() 取出或设置某个元素的高度 .val() 取出某个表单元素的值   jQuery 的链式操作  jQuery(选择器)获取元素之后并不将这些元素返回，而是返回一个可以操作这些元素的对象，所以不必多次查找相同的元素，不同操作可以连在一起。jQ 提供了.end()方法，使得结果集可以后退一步：
+$(&amp;#34;#p1&amp;#34;) .addClass(&amp;#34;red&amp;#34;) .html(&amp;#34;hello&amp;#34;) .attr(&amp;#34;title&amp;#34;,&amp;#34;head&amp;#34;)   jQuery 如何创建元素  新元素直接传入jQuery的构造函数
+$(&amp;#39;&amp;lt;p&amp;gt;Hello&amp;lt;/p&amp;gt;&amp;#39;); $(&amp;#39;&amp;lt;li class=&amp;#34;new&amp;#34;&amp;gt;new list item&amp;lt;/li&amp;gt;&amp;#39;); $(&amp;#39;ul&amp;#39;).</description>
+    </item>
     
     <item>
       <title>ES6语法 解构赋值</title>
