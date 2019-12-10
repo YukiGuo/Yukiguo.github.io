@@ -6,10 +6,57 @@
     <description>Recent content on 小郭的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-Hans</language>
-    <lastBuildDate>Thu, 07 Nov 2019 20:21:13 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 10 Dec 2019 22:19:41 +0800</lastBuildDate>
     
 	<atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>项目总结之前端导航</title>
+      <link>http://example.org/posts/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93%E4%B9%8B%E5%89%8D%E7%AB%AF%E5%AF%BC%E8%88%AA/</link>
+      <pubDate>Tue, 10 Dec 2019 22:19:41 +0800</pubDate>
+      
+      <guid>http://example.org/posts/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93%E4%B9%8B%E5%89%8D%E7%AB%AF%E5%AF%BC%E8%88%AA/</guid>
+      <description> 1.Html和Css样式  因为此页面需要兼容移动端，需要设置meta viewport
+&amp;lt;meta id=&amp;#34;viewport&amp;#34; name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no&amp;#34;&amp;gt; 利用Flex实现平均布局
+ icon-font 的应用,教程链接，常用Symbol引入法
+ 利用搜索框,进行百度搜索
+&amp;lt;form class=&amp;#34;searchForm&amp;#34; method=&amp;#34;GET&amp;#34; action=&amp;#34;https://www.baidu.com/s&amp;#34; &amp;gt; &amp;lt;input type=&amp;#34;text&amp;#34; name=&amp;#34;wd&amp;#34;&amp;gt; &amp;lt;button&amp;gt;搜索&amp;lt;/button&amp;gt; &amp;lt;/form&amp;gt;  2.JS功能实现  将导航的数据，例如网址，网站名，logo(即大写首字母),储存在哈希表中,添加网页时，push到哈希表中删除网页时，在哈希表删除 将哈希表中数据渲染到页面中，每次渲染前都需要删除，之前的所有内容，然后再重新渲染 按下删除按钮时，需要防止页面刷新，跳转  </description>
+    </item>
+    
+    <item>
+      <title>项目总结之皮卡丘</title>
+      <link>http://example.org/posts/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93%E4%B9%8B%E7%9A%AE%E5%8D%A1%E4%B8%98/</link>
+      <pubDate>Tue, 10 Dec 2019 21:28:31 +0800</pubDate>
+      
+      <guid>http://example.org/posts/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93%E4%B9%8B%E7%9A%AE%E5%8D%A1%E4%B8%98/</guid>
+      <description> 1.Html和Css样式  矩形border-radius 的多种应用，制作扇形，弧形 动画@keyframe 的应用 transform之,translateX(),rotate()，transform-origin的应用  2. JS动态代码和样式呈现  利用 setInterval(),利用InnerHTML()将字符串string的内容一个个展示在页面上，此方法有一个bug，需要判断string 的长度再执行代码，否则清除计时器 将string的内容用css的内容替换，在用InnerText()将css的数据显示在页面的style标签,这样可使得页面和style标签同时作用，为了使代码自动向上，可以设置demo.scrollTop=99999,将此项封装为一个函数 添加按钮,暂停,播放,快速,慢速  设置一个及时器,并命名id,暂停clearInterval(id),播放时重新给id赋值,慢速和快速通过setInterval()的时间参数    3.代码优化  利用对象封装,JS 代码中仅有一个player对象和一个初始化init()方法 将用到的常量放入对象中，将四个按钮对应的值和点击对应的方法，用hashTable表示(值不能是player的方法，需要设置成字符串) css的字符串内容太多，可将css的内容作为字符串放入JS子文件，在再引入 paly(),stop(),fastPlay(),slowPlay(),bindEvents()封装成对象内的方法,bindEvents()是为了遍历hashTable里面的内容，为了防止遍历到共有属性，可以先判断对象的hasOwnProperty() 一个函数直接调用一个函数，可以简化 例如:
+ setInterval(()=&amp;gt;{run()},runTime)可以简化为setInterval(run,runTime) demo.onclick=()=&amp;gt;{run()}可以简化为demo.onclick=run   </description>
+    </item>
+    
+    <item>
+      <title>Webpack入门</title>
+      <link>http://example.org/posts/webpack%E5%85%A5%E9%97%A8/</link>
+      <pubDate>Sat, 07 Dec 2019 21:33:04 +0800</pubDate>
+      
+      <guid>http://example.org/posts/webpack%E5%85%A5%E9%97%A8/</guid>
+      <description>webpack的作用  转译代码(ES6转为ES5，SCSS转为CSS),可以使得低版本的浏览器也兼容代码 构建build 代码压缩 代码分析  webpack 安装 mkdir webpack-demo cd webpack-demo npm init -y ---创建一个package.json文件 npm install webpack webpack-cli --save-dev HTTP 缓存  浏览器在加载网址时，需要加载对应的css,js等文件，如果设置了响应头的ResponseHeader的Cache-Control:public,max-age=缓存期限，且js或者css的文件名没有改动，则会直接从内存读取，不会重新下载，缩短了加载的时间 index.html的数据不应该缓存，这样可以发现及时发现js 或者css的更新，使得用户获取到最新的页面  webpack 转译JS  npx webpack 配置
+const path = require(&amp;#39;path&amp;#39;); module.exports = { mode: &amp;#34;production&amp;#34;,//开发模式 development entry: &amp;#39;./src/index.js&amp;#39;,//入口文件 output: { filename: &amp;#39;main.js&amp;#39;?&amp;#34;index.[contenthash].js&amp;#34;,//出口文件 // 文件名中的hash,为了使得更改内容时自动更新出口JS文件的文件名， //文件名改变时就不再使用缓存，重新下载新文件 }, };   webpack生成HTML文件  安装HtmlWebpackPlugin插件 npm install --save-dev html-webpack-plugin 设置config.js
+var HtmlWebpackPlugin = require(&amp;#39;html-webpack-plugin&amp;#39;); module.</description>
+    </item>
+    
+    <item>
+      <title>跨域</title>
+      <link>http://example.org/posts/%E8%B7%A8%E5%9F%9F/</link>
+      <pubDate>Mon, 11 Nov 2019 20:20:55 +0800</pubDate>
+      
+      <guid>http://example.org/posts/%E8%B7%A8%E5%9F%9F/</guid>
+      <description> 同源策略  浏览器故意设计的一个功能限制 如果JS运行在源A里面，就只能获取源A的数据，不能获取源B的数据，即不允许跨域 目的 为保护用户隐私 限制的是数据访问，可以引用，不能读取。我们在引用CSS和JS时，不知道其内部的数据，只是让css或者JS在我们的也页面执行  同源  源： 协议+域名+端口号(不同端口，同一个IP，同一个域名，都可能) 如果两个url的源一致，则这两个url同源  CORS  Cross Origin Resource 方法1：response.setHeader(&amp;lsquo;Access-Control-Allow-Origin&amp;rsquo;,&amp;lsquo;http://frank.com:9999&#39;)
+JSONP 浏览器因为某些原因不支持CORS ，必须用另种方式跨域，请求一个JS文件，JS会执行一个回调函数，回调的函数名是可以随机生成的，以callback参数传给后台，后台会把函数再次返回给我们再执行
+ 优点:支持IE，可以跨域
+ 缺点:由于是Script标签，无法AJAX那样读取精确的状态，只有成功和失败；只能发GET请求，不接受POST
+  </description>
+    </item>
     
     <item>
       <title>JQuery入门</title>
@@ -26,11 +73,11 @@ $(&amp;#39;&amp;lt;p&amp;gt;Hello&amp;lt;/p&amp;gt;&amp;#39;); $(&amp;#39;&amp;l
     </item>
     
     <item>
-      <title>ES6语法 解构赋值</title>
-      <link>http://example.org/posts/es6%E8%AF%AD%E6%B3%95-%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/</link>
+      <title>ES6常用语法</title>
+      <link>http://example.org/posts/es6%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/</link>
       <pubDate>Wed, 06 Nov 2019 21:32:12 +0800</pubDate>
       
-      <guid>http://example.org/posts/es6%E8%AF%AD%E6%B3%95-%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/</guid>
+      <guid>http://example.org/posts/es6%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/</guid>
       <description>title: &amp;ldquo;ES6语法-解构赋值&amp;rdquo; date: 2019-11-03T11:02:36+08:00
 draft: true 解构赋值 解构赋值语法是一种 Javascript 表达式。通过解构赋值, 可以将属性/值从对象/数组中取出,赋值给其他变量。  数组
 let a,b,c arr=[2,3,5] [a,b,c]=arr//将2,3,5分别赋值给a,b,c  let [bar, foo] = [1] // foo 解构不成功，为undefined  let [x, y] = [1, 2, 3] //不完全解构 x=1,y=2  //将剩余数组赋值给一个变量  let [a, ...b] = [1, 2, 3];// a =1,b=[2,3]  对象

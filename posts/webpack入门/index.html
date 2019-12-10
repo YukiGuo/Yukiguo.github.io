@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Webpack入门 - 小郭的博客</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="Webpack入门" />
+<meta property="og:description" content="webpack的作用  转译代码(ES6转为ES5，SCSS转为CSS),可以使得低版本的浏览器也兼容代码 构建build 代码压缩 代码分析  webpack 安装 mkdir webpack-demo cd webpack-demo npm init -y ---创建一个package.json文件 npm install webpack webpack-cli --save-dev HTTP 缓存  浏览器在加载网址时，需要加载对应的css,js等文件，如果设置了响应头的ResponseHeader的Cache-Control:public,max-age=缓存期限，且js或者css的文件名没有改动，则会直接从内存读取，不会重新下载，缩短了加载的时间 index.html的数据不应该缓存，这样可以发现及时发现js 或者css的更新，使得用户获取到最新的页面  webpack 转译JS  npx webpack 配置
+const path = require(&#39;path&#39;); module.exports = { mode: &#34;production&#34;,//开发模式 development entry: &#39;./src/index.js&#39;,//入口文件 output: { filename: &#39;main.js&#39;?&#34;index.[contenthash].js&#34;,//出口文件 // 文件名中的hash,为了使得更改内容时自动更新出口JS文件的文件名， //文件名改变时就不再使用缓存，重新下载新文件 }, };   webpack生成HTML文件  安装HtmlWebpackPlugin插件 npm install --save-dev html-webpack-plugin 设置config.js
+var HtmlWebpackPlugin = require(&#39;html-webpack-plugin&#39;); module." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/webpack%E5%85%A5%E9%97%A8/" />
+<meta property="article:published_time" content="2019-12-07T21:33:04+08:00" />
+<meta property="article:modified_time" content="2019-12-07T21:33:04+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Webpack入门"/>
+<meta name="twitter:description" content="webpack的作用  转译代码(ES6转为ES5，SCSS转为CSS),可以使得低版本的浏览器也兼容代码 构建build 代码压缩 代码分析  webpack 安装 mkdir webpack-demo cd webpack-demo npm init -y ---创建一个package.json文件 npm install webpack webpack-cli --save-dev HTTP 缓存  浏览器在加载网址时，需要加载对应的css,js等文件，如果设置了响应头的ResponseHeader的Cache-Control:public,max-age=缓存期限，且js或者css的文件名没有改动，则会直接从内存读取，不会重新下载，缩短了加载的时间 index.html的数据不应该缓存，这样可以发现及时发现js 或者css的更新，使得用户获取到最新的页面  webpack 转译JS  npx webpack 配置
+const path = require(&#39;path&#39;); module.exports = { mode: &#34;production&#34;,//开发模式 development entry: &#39;./src/index.js&#39;,//入口文件 output: { filename: &#39;main.js&#39;?&#34;index.[contenthash].js&#34;,//出口文件 // 文件名中的hash,为了使得更改内容时自动更新出口JS文件的文件名， //文件名改变时就不再使用缓存，重新下载新文件 }, };   webpack生成HTML文件  安装HtmlWebpackPlugin插件 npm install --save-dev html-webpack-plugin 设置config.js
+var HtmlWebpackPlugin = require(&#39;html-webpack-plugin&#39;); module."/>
+<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:500,100,300" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" media="screen" href="/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" /><script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script><script src="/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper post">
+		<div class="header">
+	<h1 class="site-title">小郭的博客</h1>
+	<div class="site-description"><h2></h2><nav class="nav social">
+			<ul class="flat"><a href="https://github.com/vividvilla/ezhil" title="Github"><i data-feather="github"></i></a><a href="https://twitter.com/gohugoio" title="Twitter"><i data-feather="twitter"></i></a></ul>
+		</nav>
+	</div>
+
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="">我的博客</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
+
+
+		<div class="post-header">
+			<h1 class="title">Webpack入门</h1>
+			<div class="meta">Posted at &mdash; Dec 7, 2019</div>
+		</div>
+
+		<div class="markdown">
+			
+
+<h4 id="webpack的作用">webpack的作用</h4>
+
+<ol>
+<li>转译代码(ES6转为ES5，SCSS转为CSS),可以使得低版本的浏览器也兼容代码</li>
+<li>构建build</li>
+<li>代码压缩</li>
+<li>代码分析</li>
+</ol>
+
+<h4 id="webpack-安装">webpack 安装</h4>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">mkdir webpack-demo
+cd webpack-demo
+npm init -y  ---创建一个package.json文件
+npm install webpack webpack-cli --save-dev</pre></div>
+<h4 id="http-缓存">HTTP 缓存</h4>
+
+<ul>
+<li>浏览器在加载网址时，需要加载对应的css,js等文件，如果设置了响应头的ResponseHeader的Cache-Control:public,max-age=缓存期限，且js或者css的文件名没有改动，则会直接从内存读取，不会重新下载，缩短了加载的时间</li>
+<li>index.html的数据不应该缓存，这样可以发现及时发现js 或者css的更新，使得用户获取到最新的页面</li>
+</ul>
+
+<h4 id="webpack-转译js">webpack 转译JS</h4>
+
+<ol>
+<li><code>npx webpack</code></li>
+
+<li><p>配置</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00f">const</span> path = require(<span style="color:#a31515">&#39;path&#39;</span>);
+module.exports = {
+mode: <span style="color:#a31515">&#34;production&#34;</span>,<span style="color:#008000">//开发模式 development
+</span><span style="color:#008000"></span>entry: <span style="color:#a31515">&#39;./src/index.js&#39;</span>,<span style="color:#008000">//入口文件
+</span><span style="color:#008000"></span>output: {
+filename: <span style="color:#a31515">&#39;main.js&#39;</span>?<span style="color:#a31515">&#34;index.[contenthash].js&#34;</span>,<span style="color:#008000">//出口文件
+</span><span style="color:#008000">// 文件名中的hash,为了使得更改内容时自动更新出口JS文件的文件名，
+</span><span style="color:#008000">//文件名改变时就不再使用缓存，重新下载新文件
+</span><span style="color:#008000"></span>},
+};
+</code></pre></div></li>
+</ol>
+
+<h4 id="webpack生成html文件">webpack生成HTML文件</h4>
+
+<ol>
+<li>安装HtmlWebpackPlugin插件 <code>npm install --save-dev html-webpack-plugin</code></li>
+
+<li><p>设置config.js</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00f">var</span> HtmlWebpackPlugin = require(<span style="color:#a31515">&#39;html-webpack-plugin&#39;</span>);
+module.exports = {
+plugins: [<span style="color:#00f">new</span> HtmlWebpackPlugin(
+   { title: <span style="color:#a31515">&#34;XXXX&#34;</span>, <span style="color:#008000">//设置网页title，
+</span><span style="color:#008000"></span>  template: <span style="color:#a31515">&#34;src/assets/index.html&#34;</span> 
+  <span style="color:#008000">// 设置网页的模板路径，没有此项的话也会在dist目录生成一个index.html
+</span><span style="color:#008000"></span>  <span style="color:#008000">//次文件的title内容可以设置为&gt;&lt;%= htmlWebpackPlugin.options.title %&gt;
+</span><span style="color:#008000"></span>  <span style="color:#008000">//则会根据此配置的title更新
+</span><span style="color:#008000"></span>   }
+)]
+};
+</code></pre></div></li>
+</ol>
+
+<h4 id="webpack引入css">webpack引入CSS</h4>
+
+<ol>
+<li>在js 文件中引入css   <code>import css from 'file.css'</code></li>
+</ol>
+
+<h5 id="方法1-直接将css内容写到-style标签中">方法1.直接将css内容写到 style标签中</h5>
+
+<ol>
+<li>安装 css-loader和style-loader   ``<code>npm install --save-dev css-loader/style-loader</code></li>
+
+<li><p>配置 config.js</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">module.exports = {
+module: {
+rules: [
+  {
+    test: <span style="color:#a31515">/\.css$/i</span>,
+    use: [<span style="color:#a31515">&#39;style-loader&#39;</span>, <span style="color:#a31515">&#39;css-loader&#39;</span>],
+  },
+],
+},
+};
+</code></pre></div></li>
+</ol>
+
+<h5 id="方法2-将css抽取成文件-并在index-html中引入">方法2.将css抽取成文件，并在index.html中引入</h5>
+
+<ol>
+<li>安装MiniCssExtractPlugin插件 <code>npm install --save-dev mini-css-extract-plugin</code></li>
+
+<li><p>配置 config.js</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00f">const</span> MiniCssExtractPlugin = require(<span style="color:#a31515">&#39;mini-css-extract-plugin&#39;</span>);
+module.exports = {
+plugins: [
+<span style="color:#00f">new</span> MiniCssExtractPlugin({
+  filename: <span style="color:#a31515">&#39;[name].[contenthash].css&#39;</span>,
+  chunkFilename: <span style="color:#a31515">&#39;[id].[contenthash].css&#39;</span>,
+  ignoreOrder: <span style="color:#00f">false</span>, <span style="color:#008000">// Enable to remove warnings about conflicting order
+</span><span style="color:#008000"></span>}),
+],
+module: {
+rules: [
+  {
+    test: <span style="color:#a31515">/\.css$/</span>,
+    use: [
+      {
+        loader: MiniCssExtractPlugin.loader,
+        options: {
+          publicPath: <span style="color:#a31515">&#39;../&#39;</span>,
+          hmr: process.env.NODE_ENV === <span style="color:#a31515">&#39;development&#39;</span>,
+        },
+      },
+      <span style="color:#a31515">&#39;css-loader&#39;</span>,
+    ],
+  },
+],
+},
+};
+</code></pre></div></li>
+</ol>
+
+<h4 id="引入sass-less-stylus">引入SASS,Less,Stylus</h4>
+
+<ol>
+<li>SASS 安装 sass-loader,和dart-sass <code>npm install sass-loader dart-sass webpack --save-dev</code></li>
+<li>Less 安装 less 和less-loader</li>
+<li>Stylus 安装 stylus 和stylus-loader</li>
+
+<li><p>配置 config.js</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">module.exports = {
+module: {
+rules: [
+  {
+    <span style="color:#008000">//SASS
+</span><span style="color:#008000"></span>    test: <span style="color:#a31515">/\.s[ac]ss$/i</span>,
+    use: [
+      <span style="color:#a31515">&#39;style-loader&#39;</span>,
+      <span style="color:#a31515">&#39;css-loader&#39;</span>,
+      {
+        loader:<span style="color:#a31515">&#39;sass-loader&#39;</span>,
+         options:{implementation:require(<span style="color:#a31515">&#39;dart-css&#39;</span>)}
+      }
+    <span style="color:#008000">//Less
+</span><span style="color:#008000"></span>    <span style="color:#008000">// test: /\.less$/,
+</span><span style="color:#008000"></span>    <span style="color:#008000">// use: [&#39;style-loader&#39;,&#39;css-loader&#39;,&#39;less-loader&#39;]
+</span><span style="color:#008000"></span>     <span style="color:#008000">//Stylus
+</span><span style="color:#008000"></span>    <span style="color:#008000">// test: /\.styl$/,
+</span><span style="color:#008000"></span>    <span style="color:#008000">// use: [&#39;style-loader&#39;,&#39;css-loader&#39;,&#39;stylus-loader&#39;]
+</span><span style="color:#008000"></span>    ],
+  },
+],
+},
+};
+</code></pre></div></li>
+</ol>
+
+<h4 id="webpack-引入图片">webpack 引入图片</h4>
+
+<ol>
+<li>js中引入图片<code>import png from './xxxx'</code></li>
+<li>安装file-loader <code>npm install file-loader --save-dev</code></li>
+
+<li><p>配置 config.js ; file-loader会自动给图片文件名加hash</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">module.exports = {
+module: {
+rules: [
+  {
+    test: <span style="color:#a31515">/\.(png|jpe?g|gif)$/i</span>,
+    use: [
+      {
+        loader: <span style="color:#a31515">&#39;file-loader&#39;</span>,
+      },
+    ],
+  },
+],
+},
+};
+</code></pre></div></li>
+</ol>
+
+<h4 id="懒加载">懒加载</h4>
+
+<ol>
+<li><p>动态import可以像调用函数一样来动态的导入模块。以这种方式调用，将返回一个 promise 。js中引入一个需要懒加载的js <code>import(./lazy.js)</code></p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00f">const</span> promise =<span style="color:#00f">import</span>(<span style="color:#a31515">&#39;/modules/my-module.js&#39;</span>)\
+promise.then((module) =&gt; {
+});
+</code></pre></div></li>
+</ol>
+
+<h4 id="plugin和loader-的区别">plugin和loader 的区别</h4>
+
+<ul>
+<li>loader 加载器，用来加载资源文件，例webpack中的内置bable-loader，可以加载JS，将高版本的JS转为低版本的JS,以便于更多浏览器支持，css-loader和style-loader 将css加载为页面的style标签。支持一对一的文件加载</li>
+<li>plugin 插件，用来扩展 Webpack 功能，plugin的功能更加的丰富，而不仅局限于资源的加载。例如MiniCssExtractPlugin,将css抽取成文件，并在html中引入</li>
+</ul>
+
+<h4 id="不同模式下使用不同的css打包方式">不同模式下使用不同的css打包方式</h4>
+
+<ol>
+<li>可以新建文件config.common.js 用来储存共同的属性,config.prod.js储存 产品发布模式时的配置 ,config.deve.js储存 产品开发模式时的配置</li>
+<li>config.prod.js 或者 config.deve.js 通过&hellip;来继承common的属性</li>
+</ol>
+
+<h4 id="build">build</h4>
+
+<ul>
+<li>因为webpack时会创建一个新的dist目录，所以先移除dist目录，创建脚本 <code>rm -rf dist &amp;&amp; webpack</code></li>
+</ul>
+
+<h4 id="webpack-server-dev">webpack server&ndash;dev</h4>
+
+<ol>
+<li>安装 <code>npm install --save-dev webpack-dev-server</code></li>
+
+<li><p>配置</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">module.exports = {
+devServer: {    contentBase: <span style="color:#a31515">&#39;./dist&#39;</span>,
+},
+</code></pre></div></li>
+
+<li><p>脚本配置package.json</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">{
+<span style="color:#a31515">&#34;start&#34;</span>: <span style="color:#a31515">&#34;webpack-dev-server --open&#34;</span>,
+},
+</code></pre></div></li>
+
+<li><p>运行 <code>npm run start</code></p></li>
+</ol>
+
+<h4 id="github一键部署">github一键部署</h4>
+
+		</div><div id="disqus_thread"></div>
+<script type="text/javascript">
+	(function () {
+		
+		
+		if (window.location.hostname == "localhost")
+			return;
+
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		var disqus_shortname = 'localhost';
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+		Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div><a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-123-45', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<script>feather.replace()</script>
+</body>
+</html>

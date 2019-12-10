@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>ES6常用语法 - 小郭的博客</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="ES6常用语法" />
+<meta property="og:description" content="title: &ldquo;ES6语法-解构赋值&rdquo; date: 2019-11-03T11:02:36&#43;08:00
+draft: true 解构赋值 解构赋值语法是一种 Javascript 表达式。通过解构赋值, 可以将属性/值从对象/数组中取出,赋值给其他变量。  数组
+let a,b,c arr=[2,3,5] [a,b,c]=arr//将2,3,5分别赋值给a,b,c  let [bar, foo] = [1] // foo 解构不成功，为undefined  let [x, y] = [1, 2, 3] //不完全解构 x=1,y=2  //将剩余数组赋值给一个变量  let [a, ...b] = [1, 2, 3];// a =1,b=[2,3]  对象
+//对象的属性没有次序，变量必须与属性同名，才能取到正确的值。 let { a, b } = { a: &#39;aaa&#39;, b: &#39;bbb&#39; } // 如果变量名与属性名不一致，必须写成下面这样 let obj = { first: &#39;hello&#39;, last: &#39;world&#39; } let { first: f, last: l } = obj; //对象的解构赋值是下面形式的简写 let { foo: foo, bar: bar } = { foo: &#39;aaa&#39;, bar: &#39;bbb&#39; }  字符串" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/es6%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/" />
+<meta property="article:published_time" content="2019-11-06T21:32:12+08:00" />
+<meta property="article:modified_time" content="2019-11-06T21:32:12+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="ES6常用语法"/>
+<meta name="twitter:description" content="title: &ldquo;ES6语法-解构赋值&rdquo; date: 2019-11-03T11:02:36&#43;08:00
+draft: true 解构赋值 解构赋值语法是一种 Javascript 表达式。通过解构赋值, 可以将属性/值从对象/数组中取出,赋值给其他变量。  数组
+let a,b,c arr=[2,3,5] [a,b,c]=arr//将2,3,5分别赋值给a,b,c  let [bar, foo] = [1] // foo 解构不成功，为undefined  let [x, y] = [1, 2, 3] //不完全解构 x=1,y=2  //将剩余数组赋值给一个变量  let [a, ...b] = [1, 2, 3];// a =1,b=[2,3]  对象
+//对象的属性没有次序，变量必须与属性同名，才能取到正确的值。 let { a, b } = { a: &#39;aaa&#39;, b: &#39;bbb&#39; } // 如果变量名与属性名不一致，必须写成下面这样 let obj = { first: &#39;hello&#39;, last: &#39;world&#39; } let { first: f, last: l } = obj; //对象的解构赋值是下面形式的简写 let { foo: foo, bar: bar } = { foo: &#39;aaa&#39;, bar: &#39;bbb&#39; }  字符串"/>
+<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:500,100,300" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" media="screen" href="/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" /><script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script><script src="/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper post">
+		<div class="header">
+	<h1 class="site-title">小郭的博客</h1>
+	<div class="site-description"><h2></h2><nav class="nav social">
+			<ul class="flat"><a href="https://github.com/vividvilla/ezhil" title="Github"><i data-feather="github"></i></a><a href="https://twitter.com/gohugoio" title="Twitter"><i data-feather="twitter"></i></a></ul>
+		</nav>
+	</div>
+
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="">我的博客</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
+
+
+		<div class="post-header">
+			<h1 class="title">ES6常用语法</h1>
+			<div class="meta">Posted at &mdash; Nov 6, 2019</div>
+		</div>
+
+		<div class="markdown">
+			
+
+<hr />
+
+<p>title: &ldquo;ES6语法-解构赋值&rdquo;
+date: 2019-11-03T11:02:36+08:00</p>
+
+<h2 id="draft-true">draft: true</h2>
+
+<h3 id="解构赋值">解构赋值</h3>
+
+<h5 id="解构赋值语法是一种-javascript-表达式-通过解构赋值-可以将属性-值从对象-数组中取出-赋值给其他变量">解构赋值语法是一种 Javascript 表达式。通过解构赋值, 可以将属性/值从对象/数组中取出,赋值给其他变量。</h5>
+
+<ol>
+<li><p>数组</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"> <span style="color:#00f">let</span> a,b,c arr=[2,3,5] [a,b,c]=arr<span style="color:#008000">//将2,3,5分别赋值给a,b,c
+</span><span style="color:#008000"></span> <span style="color:#00f">let</span> [bar, foo] = [1] <span style="color:#008000">// foo 解构不成功，为undefined
+</span><span style="color:#008000"></span> <span style="color:#00f">let</span> [x, y] = [1, 2, 3] <span style="color:#008000">//不完全解构 x=1,y=2
+</span><span style="color:#008000"></span> <span style="color:#008000">//将剩余数组赋值给一个变量
+</span><span style="color:#008000"></span> <span style="color:#00f">let</span>  [a, ...b] = [1, 2, 3];<span style="color:#008000">// a =1,b=[2,3]
+</span></code></pre></div></li>
+
+<li><p>对象</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#008000">//对象的属性没有次序，变量必须与属性同名，才能取到正确的值。
+</span><span style="color:#008000"></span><span style="color:#00f">let</span> { a, b } = { a: <span style="color:#a31515">&#39;aaa&#39;</span>, b: <span style="color:#a31515">&#39;bbb&#39;</span> }
+<span style="color:#008000">// 如果变量名与属性名不一致，必须写成下面这样
+</span><span style="color:#008000"></span><span style="color:#00f">let</span> obj = { first: <span style="color:#a31515">&#39;hello&#39;</span>, last: <span style="color:#a31515">&#39;world&#39;</span> }
+<span style="color:#00f">let</span> { first: f, last: l } = obj;
+<span style="color:#008000">//对象的解构赋值是下面形式的简写
+</span><span style="color:#008000"></span><span style="color:#00f">let</span> { foo: foo, bar: bar } = { foo: <span style="color:#a31515">&#39;aaa&#39;</span>, bar: <span style="color:#a31515">&#39;bbb&#39;</span> }
+</code></pre></div></li>
+
+<li><p>字符串</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00f">const</span> [a, b, c, d, e] = <span style="color:#a31515">&#39;hello&#39;</span>
+<span style="color:#00f">let</span> {length : len} = <span style="color:#a31515">&#39;hello&#39;</span>
+</code></pre></div></li>
+
+<li><p>交换变量</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00f">var</span> a = 1;
+<span style="color:#00f">var</span> b = 3;
+[a, b] = [b, a];
+</code></pre></div></li>
+</ol>
+
+		</div><div id="disqus_thread"></div>
+<script type="text/javascript">
+	(function () {
+		
+		
+		if (window.location.hostname == "localhost")
+			return;
+
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		var disqus_shortname = 'localhost';
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+		Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div><a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-123-45', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<script>feather.replace()</script>
+</body>
+</html>

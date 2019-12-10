@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>项目总结之皮卡丘 - 小郭的博客</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="项目总结之皮卡丘" />
+<meta property="og:description" content=" 1.Html和Css样式  矩形border-radius 的多种应用，制作扇形，弧形 动画@keyframe 的应用 transform之,translateX(),rotate()，transform-origin的应用  2. JS动态代码和样式呈现  利用 setInterval(),利用InnerHTML()将字符串string的内容一个个展示在页面上，此方法有一个bug，需要判断string 的长度再执行代码，否则清除计时器 将string的内容用css的内容替换，在用InnerText()将css的数据显示在页面的style标签,这样可使得页面和style标签同时作用，为了使代码自动向上，可以设置demo.scrollTop=99999,将此项封装为一个函数 添加按钮,暂停,播放,快速,慢速  设置一个及时器,并命名id,暂停clearInterval(id),播放时重新给id赋值,慢速和快速通过setInterval()的时间参数    3.代码优化  利用对象封装,JS 代码中仅有一个player对象和一个初始化init()方法 将用到的常量放入对象中，将四个按钮对应的值和点击对应的方法，用hashTable表示(值不能是player的方法，需要设置成字符串) css的字符串内容太多，可将css的内容作为字符串放入JS子文件，在再引入 paly(),stop(),fastPlay(),slowPlay(),bindEvents()封装成对象内的方法,bindEvents()是为了遍历hashTable里面的内容，为了防止遍历到共有属性，可以先判断对象的hasOwnProperty() 一个函数直接调用一个函数，可以简化 例如:
+ setInterval(()=&gt;{run()},runTime)可以简化为setInterval(run,runTime) demo.onclick=()=&gt;{run()}可以简化为demo.onclick=run   " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93%E4%B9%8B%E7%9A%AE%E5%8D%A1%E4%B8%98/" />
+<meta property="article:published_time" content="2019-12-10T21:28:31+08:00" />
+<meta property="article:modified_time" content="2019-12-10T21:28:31+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="项目总结之皮卡丘"/>
+<meta name="twitter:description" content=" 1.Html和Css样式  矩形border-radius 的多种应用，制作扇形，弧形 动画@keyframe 的应用 transform之,translateX(),rotate()，transform-origin的应用  2. JS动态代码和样式呈现  利用 setInterval(),利用InnerHTML()将字符串string的内容一个个展示在页面上，此方法有一个bug，需要判断string 的长度再执行代码，否则清除计时器 将string的内容用css的内容替换，在用InnerText()将css的数据显示在页面的style标签,这样可使得页面和style标签同时作用，为了使代码自动向上，可以设置demo.scrollTop=99999,将此项封装为一个函数 添加按钮,暂停,播放,快速,慢速  设置一个及时器,并命名id,暂停clearInterval(id),播放时重新给id赋值,慢速和快速通过setInterval()的时间参数    3.代码优化  利用对象封装,JS 代码中仅有一个player对象和一个初始化init()方法 将用到的常量放入对象中，将四个按钮对应的值和点击对应的方法，用hashTable表示(值不能是player的方法，需要设置成字符串) css的字符串内容太多，可将css的内容作为字符串放入JS子文件，在再引入 paly(),stop(),fastPlay(),slowPlay(),bindEvents()封装成对象内的方法,bindEvents()是为了遍历hashTable里面的内容，为了防止遍历到共有属性，可以先判断对象的hasOwnProperty() 一个函数直接调用一个函数，可以简化 例如:
+ setInterval(()=&gt;{run()},runTime)可以简化为setInterval(run,runTime) demo.onclick=()=&gt;{run()}可以简化为demo.onclick=run   "/>
+<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:500,100,300" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" media="screen" href="/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" /><script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script><script src="/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper post">
+		<div class="header">
+	<h1 class="site-title">小郭的博客</h1>
+	<div class="site-description"><h2></h2><nav class="nav social">
+			<ul class="flat"><a href="https://github.com/vividvilla/ezhil" title="Github"><i data-feather="github"></i></a><a href="https://twitter.com/gohugoio" title="Twitter"><i data-feather="twitter"></i></a></ul>
+		</nav>
+	</div>
+
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="">我的博客</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
+
+
+		<div class="post-header">
+			<h1 class="title">项目总结之皮卡丘</h1>
+			<div class="meta">Posted at &mdash; Dec 10, 2019</div>
+		</div>
+
+		<div class="markdown">
+			
+
+<h4 id="1-html和css样式">1.Html和Css样式</h4>
+
+<ol>
+<li>矩形border-radius 的多种应用，制作扇形，弧形</li>
+<li>动画@keyframe 的应用</li>
+<li>transform之,translateX(),rotate()，transform-origin的应用</li>
+</ol>
+
+<h4 id="2-js动态代码和样式呈现">2. JS动态代码和样式呈现</h4>
+
+<ol>
+<li>利用 setInterval(),利用InnerHTML()将字符串string的内容一个个展示在页面上，此方法有一个bug，需要判断string 的长度再执行代码，否则清除计时器</li>
+<li>将string的内容用css的内容替换，在用InnerText()将css的数据显示在页面的style标签,这样可使得页面和style标签同时作用，为了使代码自动向上，可以设置demo.scrollTop=99999,将此项封装为一个函数</li>
+<li>添加按钮,暂停,播放,快速,慢速
+
+<ul>
+<li>设置一个及时器,并命名id,暂停clearInterval(id),播放时重新给id赋值,慢速和快速通过setInterval()的时间参数
+<br /></li>
+</ul></li>
+</ol>
+
+<h4 id="3-代码优化">3.代码优化</h4>
+
+<ol>
+<li>利用对象封装,JS 代码中仅有一个player对象和一个初始化init()方法</li>
+<li>将用到的常量放入对象中，将四个按钮对应的值和点击对应的方法，用hashTable表示(值不能是player的方法，需要设置成字符串)</li>
+<li>css的字符串内容太多，可将css的内容作为字符串放入JS子文件，在再引入</li>
+<li>paly(),stop(),fastPlay(),slowPlay(),bindEvents()封装成对象内的方法,bindEvents()是为了遍历hashTable里面的内容，为了防止遍历到共有属性，可以先判断对象的hasOwnProperty()</li>
+
+<li><p>一个函数直接调用一个函数，可以简化 例如:</p>
+
+<ul>
+<li>setInterval(()=&gt;{run()},runTime)可以简化为setInterval(run,runTime)</li>
+<li>demo.onclick=()=&gt;{run()}可以简化为demo.onclick=run</li>
+</ul></li>
+</ol>
+
+		</div><div id="disqus_thread"></div>
+<script type="text/javascript">
+	(function () {
+		
+		
+		if (window.location.hostname == "localhost")
+			return;
+
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		var disqus_shortname = 'localhost';
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+		Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div><a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-123-45', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<script>feather.replace()</script>
+</body>
+</html>
