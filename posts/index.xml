@@ -6,10 +6,47 @@
     <description>Recent content in Posts on 小郭的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-Hans</language>
-    <lastBuildDate>Tue, 10 Dec 2019 22:19:41 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 11 Dec 2019 22:17:44 +0800</lastBuildDate>
     
 	<atom:link href="http://example.org/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>JSON</title>
+      <link>http://example.org/posts/json/</link>
+      <pubDate>Wed, 11 Dec 2019 22:17:44 +0800</pubDate>
+      
+      <guid>http://example.org/posts/json/</guid>
+      <description> 全称JavaScript Object Notation,是一种标记语言 JSON的基本数据类型  number string 只支持双引号 boolean object array null  两个方法  JSON.parse() , 用来解析JSON字符串，转化成JavaScript对应的数据类型 JSON.stringfy() ,用来将 JavaScript 值（对象或者数组）转换为一个 JSON 字符串 因为 JS的数据类型多余JSON数据,所以不一定能成功,如果出错可以用try{}catch(error){}捕获错误  </description>
+    </item>
+    
+    <item>
+      <title>AJAX</title>
+      <link>http://example.org/posts/ajax/</link>
+      <pubDate>Wed, 11 Dec 2019 21:19:54 +0800</pubDate>
+      
+      <guid>http://example.org/posts/ajax/</guid>
+      <description> AJAX 简介  全称 Async Javascript And XML AJAX是浏览器上的功能，浏览器在window上加了一个XMLHttpRequest9()的构造函数 用JS通过它来发出请求和接收响应  创建一个AJAX请求,并且请求css文件  创建一个XMLHttpRequest() const request = newXMLHttpRequest() 调用对象的open方法，request.open(&amp;ldquo;GET&amp;rdquo;,&amp;lsquo;url&amp;rsquo;) 监听对象的onload和onerror
+ request.onload =(()=&amp;gt;{}) request.onerror =(()=&amp;gt;{})&amp;mdash;-不建议使用,没有非常好的匹配AJAx 利用 onreadystatechange 优化
+request.onreadystatechange = () =&amp;gt; { if (request.readyState === 4 &amp;amp;&amp;amp; request.status === 200) { const dom = request.responseXML const text = dom.getElementsByTagName(&amp;#34;warning&amp;#34;)[0].textContent console.log(text.trim()) } }   发送请求 request.send()
+ 创建style,并设置内容的InnerHTML(request.response)
+  readyState 返回一个 XMLHttpRequest 代理当前所处的状态  值 0 &amp;mdash;-UNSENT &amp;mdash;&amp;ndash; 代理被创建，但尚未调用 open() 方法 值 1 &amp;mdash;-OPEND &amp;mdash;&amp;ndash; 方法已经被调用 值 2 &amp;mdash;-HEADERS_RECEIVED &amp;mdash;- 方法已经被调用，并且头部和状态已经可获得。 值 3 &amp;mdash;-LOADING &amp;mdash;- 下载中,responseText 属性已经包含部分数据 值 4 &amp;mdash;-DONE &amp;mdash;- 下载操作已完成。  </description>
+    </item>
+    
+    <item>
+      <title>HTTP请求和响应</title>
+      <link>http://example.org/posts/http%E8%AF%B7%E6%B1%82%E5%92%8C%E5%93%8D%E5%BA%94/</link>
+      <pubDate>Wed, 11 Dec 2019 20:08:52 +0800</pubDate>
+      
+      <guid>http://example.org/posts/http%E8%AF%B7%E6%B1%82%E5%92%8C%E5%93%8D%E5%BA%94/</guid>
+      <description>请求  请求行，请求动词/路径 版本号
+ 请求动词  共有GET/POST/PUT/PATCH/DELETE5中 GET用来获取内容，POST用来上传内容   请求头
+ HOST 域名+端口号 Accept text/html(默认值) Content-Type:请求体的格式  请求体(格式由Content-Type指定)
+ 注意
+ GET请求没有请求体 请求头和请求体中间有一个回车
+ 大小写不敏感，但是JS敏感  发出请求
+ 用 curl 发出请求 curl -v http://localhost:8888 设置请求动词 : curl -v -X POST http://localhost:8888 设置路径和查询参数 curl -v -X POST http://localhost:8888/xxx?wd=hi (不能加锚点,锚点不会发到服务器 ) 设置请求头  -H &amp;lsquo;Name: Value&amp;rsquo; 或者 &amp;ndash;header &amp;lsquo;Name: Value&amp;rsquo; curl -v -X POST -H &amp;lsquo;Accept:text/html&amp;rsquo;http://localhost:8888  设置请求体  -d &amp;lsquo;内容&amp;rsquo;或者 &amp;ndash;data&amp;rsquo;内容&amp;rsquo;   Node.</description>
+    </item>
     
     <item>
       <title>项目总结之前端导航</title>

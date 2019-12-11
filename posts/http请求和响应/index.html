@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>HTTP请求和响应 - 小郭的博客</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="HTTP请求和响应" />
+<meta property="og:description" content="请求  请求行，请求动词/路径 版本号
+ 请求动词  共有GET/POST/PUT/PATCH/DELETE5中 GET用来获取内容，POST用来上传内容   请求头
+ HOST 域名&#43;端口号 Accept text/html(默认值) Content-Type:请求体的格式  请求体(格式由Content-Type指定)
+ 注意
+ GET请求没有请求体 请求头和请求体中间有一个回车
+ 大小写不敏感，但是JS敏感  发出请求
+ 用 curl 发出请求 curl -v http://localhost:8888 设置请求动词 : curl -v -X POST http://localhost:8888 设置路径和查询参数 curl -v -X POST http://localhost:8888/xxx?wd=hi (不能加锚点,锚点不会发到服务器 ) 设置请求头  -H &lsquo;Name: Value&rsquo; 或者 &ndash;header &lsquo;Name: Value&rsquo; curl -v -X POST -H &lsquo;Accept:text/html&rsquo;http://localhost:8888  设置请求体  -d &lsquo;内容&rsquo;或者 &ndash;data&rsquo;内容&rsquo;   Node." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/http%E8%AF%B7%E6%B1%82%E5%92%8C%E5%93%8D%E5%BA%94/" />
+<meta property="article:published_time" content="2019-12-11T20:08:52+08:00" />
+<meta property="article:modified_time" content="2019-12-11T20:08:52+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="HTTP请求和响应"/>
+<meta name="twitter:description" content="请求  请求行，请求动词/路径 版本号
+ 请求动词  共有GET/POST/PUT/PATCH/DELETE5中 GET用来获取内容，POST用来上传内容   请求头
+ HOST 域名&#43;端口号 Accept text/html(默认值) Content-Type:请求体的格式  请求体(格式由Content-Type指定)
+ 注意
+ GET请求没有请求体 请求头和请求体中间有一个回车
+ 大小写不敏感，但是JS敏感  发出请求
+ 用 curl 发出请求 curl -v http://localhost:8888 设置请求动词 : curl -v -X POST http://localhost:8888 设置路径和查询参数 curl -v -X POST http://localhost:8888/xxx?wd=hi (不能加锚点,锚点不会发到服务器 ) 设置请求头  -H &lsquo;Name: Value&rsquo; 或者 &ndash;header &lsquo;Name: Value&rsquo; curl -v -X POST -H &lsquo;Accept:text/html&rsquo;http://localhost:8888  设置请求体  -d &lsquo;内容&rsquo;或者 &ndash;data&rsquo;内容&rsquo;   Node."/>
+<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:500,100,300" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" media="screen" href="/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" /><script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script><script src="/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper post">
+		<div class="header">
+	<h1 class="site-title">小郭的博客</h1>
+	<div class="site-description"><h2></h2><nav class="nav social">
+			<ul class="flat"><a href="https://github.com/vividvilla/ezhil" title="Github"><i data-feather="github"></i></a><a href="https://twitter.com/gohugoio" title="Twitter"><i data-feather="twitter"></i></a></ul>
+		</nav>
+	</div>
+
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="">我的博客</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
+
+
+		<div class="post-header">
+			<h1 class="title">HTTP请求和响应</h1>
+			<div class="meta">Posted at &mdash; Dec 11, 2019</div>
+		</div>
+
+		<div class="markdown">
+			
+
+<h4 id="请求">请求</h4>
+
+<ol>
+<li><p>请求行，请求动词/路径 版本号</p>
+
+<ul>
+<li>请求动词
+
+<ul>
+<li>共有GET/POST/PUT/PATCH/DELETE5中</li>
+<li>GET用来获取内容，POST用来上传内容</li>
+</ul></li>
+</ul></li>
+
+<li><p>请求头</p>
+
+<ol>
+<li>HOST 域名+端口号</li>
+<li>Accept text/html(默认值)</li>
+<li>Content-Type:请求体的格式</li>
+</ol></li>
+
+<li><p>请求体(格式由Content-Type指定)</p></li>
+
+<li><p>注意</p>
+
+<ul>
+<li>GET请求没有请求体</li>
+<li>请求头和请求体中间有一个回车<br /></li>
+<li>大小写不敏感，但是JS敏感</li>
+</ul></li>
+
+<li><p>发出请求</p>
+
+<ol>
+<li>用 curl 发出请求</li>
+<li>curl -v <a href="http://localhost:8888">http://localhost:8888</a></li>
+<li>设置请求动词 :  curl -v -X POST <a href="http://localhost:8888">http://localhost:8888</a></li>
+<li>设置路径和查询参数  curl -v -X POST <a href="http://localhost:8888/xxx?wd=hi">http://localhost:8888/xxx?wd=hi</a> (不能加锚点,锚点不会发到服务器 )</li>
+<li>设置请求头
+
+<ul>
+<li>-H &lsquo;Name: Value&rsquo; 或者 &ndash;header &lsquo;Name: Value&rsquo;</li>
+<li>curl -v -X POST -H &lsquo;Accept:text/html&rsquo;<a href="http://localhost:8888">http://localhost:8888</a></li>
+</ul></li>
+<li>设置请求体
+
+<ul>
+<li>-d &lsquo;内容&rsquo;或者 &ndash;data&rsquo;内容&rsquo;</li>
+</ul></li>
+</ol></li>
+
+<li><p>Node.js 读取请求</p>
+
+<ol>
+<li>读取请求动词 request.method</li>
+<li>读取路径
+
+<ul>
+<li>request.url,带查询参数</li>
+<li>request.path,不带查询参数</li>
+<li>request.query,只有查询参数</li>
+</ul></li>
+<li>读取请求头
+
+<ul>
+<li>request.Headers[&lsquo;Accept&rsquo;]</li>
+</ul></li>
+<li>读取响应体<br /></li>
+</ol></li>
+</ol>
+
+<h4 id="响应">响应</h4>
+
+<ol>
+<li>状态行
+
+<ul>
+<li>协议名/版本 状态码 状态码字符串</li>
+</ul></li>
+<li>响应头
+
+<ul>
+<li>Content-Type:响应体的格式</li>
+</ul></li>
+
+<li><p>响应体</p></li>
+
+<li><p>注意</p>
+
+<ul>
+<li>响应头和响应体中间有空格</li>
+<li><a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec6.html">状态码明细</a></li>
+</ul></li>
+
+<li><p>Node.js 设置响应</p>
+
+<ol>
+<li>设置状态码 response.statusCode =333</li>
+<li>设置响应头 response.setHeader(&ldquo;Content-Type&rdquo;,&ldquo;text/html;charset=utf-8&rdquo;)</li>
+<li>设置响应体 response.write(&ldquo;内容&rdquo;),可追加分两次写</li>
+</ol></li>
+</ol>
+
+		</div><div id="disqus_thread"></div>
+<script type="text/javascript">
+	(function () {
+		
+		
+		if (window.location.hostname == "localhost")
+			return;
+
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		var disqus_shortname = 'localhost';
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+		Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div><a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-123-45', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<script>feather.replace()</script>
+</body>
+</html>
