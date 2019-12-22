@@ -121,6 +121,87 @@ el:<span style="color:#a31515">&#34;#app&#34;</span>,
 </ul></li>
 </ol>
 
+<h4 id="vue构造选项-options">vue构造选项（options）</h4>
+
+<ol>
+<li>el
+
+<ul>
+<li>挂载点，需要渲染在页面的哪一部分<code>new Vue({el:'#app')}</code></li>
+<li>可以使用$mount 代替，`<code>new Vue{()}.$mount('#app')</code></li>
+</ul></li>
+<li>data
+
+<ul>
+<li>data 有函数和对象两种写法，优先使用函数方法，在vue组件中只能写函数方法<br /></li>
+</ul></li>
+
+<li><p>methods</p>
+
+<ol>
+<li>方法和函数的区别，方法是面向对象的(obj.add())，函数是单独的(add())</li>
+<li>两种使用方法</li>
+<li>通过@click=&ldquo;add&rdquo; 调用</li>
+
+<li><p>直接在页面中使用{{even()}},展示array中的偶数部分</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">data() {
+<span style="color:#00f">return</span> {
+array:[0,1,2,3,4,5,6,7,8,9]
+}},
+methods:{
+even(){<span style="color:#00f">return</span> <span style="color:#00f">this</span>.array.filter(i=&gt;i%2===0)}
+}
+</code></pre></div></li>
+</ol></li>
+
+<li><p>components组件,三种使用方法</p>
+
+<ol>
+<li><p>在Vue的实例中引入单文件组件</p>
+
+<ul>
+<li>创建单文件组件demo.vue,在main.js 中通过import引入，<code>import demo from './demo.vue</code></li>
+
+<li><p>vue实例中引入</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00f">new</span> Vue =({
+components:{demo:demo},
+template:<span style="color:#a31515">`&lt;div&gt;&lt;demo/&gt;&lt;/div&gt;`</span>
+})
+</code></pre></div></li>
+</ul></li>
+
+<li><p>直接在main.js中创建components组件</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">Vue.component(<span style="color:#a31515">&#39;demo2&#39;</span>,{
+template:<span style="color:#a31515">`&lt;div&gt;Demo2&lt;/div&gt;`</span>})
+<span style="color:#008000">//然后在Vue实例中template引用
+</span></code></pre></div></li>
+
+<li><p>在Vue实例中创建组件</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00f">new</span> Vue({
+components:{
+demo3:{
+template:<span style="color:#a31515">`&lt;div&gt;Demo3&lt;/div&gt;`</span>}
+</code></pre></div></li>
+</ol></li>
+</ol>
+
+<h4 id="生命周期钩子">生命周期钩子</h4>
+
+<ol>
+<li>beforeCreate</li>
+<li>created :出现在内存中，不出现在页面中</li>
+<li>beforeMount</li>
+<li>mounted :出现在页面中了</li>
+<li>beforeUpdate</li>
+<li>updated: 页面更新了</li>
+<li>activated</li>
+<li>deactivated</li>
+<li>beforeDestroy</li>
+<li>destroyed :从页面中消失，例如v-if指令中，隐藏了组件则会调用</li>
+</ol>
+
+<h4 id="props">props</h4>
+
 		</div><div id="disqus_thread"></div>
 <script type="text/javascript">
 	(function () {

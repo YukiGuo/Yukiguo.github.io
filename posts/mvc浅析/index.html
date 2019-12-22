@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>MVC浅析 - 小郭的博客</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="MVC浅析" />
+<meta property="og:description" content="MVC  M 模型（Model），负责操作所有数据 V 视图（View），负责所有UI界面 C 控制器 Controller），连接交互和数据模型的一个控制器
+import &#39;./app1.css&#39; import $ from &#39;jquery&#39; const eventBus = $(window) // 数据相关都放到m const m = { data: { n: parseInt(localStorage.getItem(&#39;n&#39;)) }, create() {}, delete() {}, update(data) { Object.assign(m.data, data) eventBus.trigger(&#39;m:updated&#39;) localStorage.setItem(&#39;n&#39;, m.data.n) }, get() {} } // 视图相关都放到v const v = { el: null, html: ` &lt;div&gt; &lt;div class=&#34;output&#34;&gt; &lt;span id=&#34;number&#34;&gt;{{n}}&lt;/span&gt; &lt;/div&gt; &lt;div class=&#34;actions&#34;&gt; &lt;button id=&#34;add1&#34;&gt;&#43;1&lt;/button&gt; &lt;button id=&#34;minus1&#34;&gt;-1&lt;/button&gt; &lt;button id=&#34;mul2&#34;&gt;*2&lt;/button&gt; &lt;button id=&#34;divide2&#34;&gt;÷2&lt;/button&gt; &lt;/div&gt; &lt;/div&gt; `, init(container) { v." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/mvc%E6%B5%85%E6%9E%90/" />
+<meta property="article:published_time" content="2019-12-22T20:17:46+08:00" />
+<meta property="article:modified_time" content="2019-12-22T20:17:46+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="MVC浅析"/>
+<meta name="twitter:description" content="MVC  M 模型（Model），负责操作所有数据 V 视图（View），负责所有UI界面 C 控制器 Controller），连接交互和数据模型的一个控制器
+import &#39;./app1.css&#39; import $ from &#39;jquery&#39; const eventBus = $(window) // 数据相关都放到m const m = { data: { n: parseInt(localStorage.getItem(&#39;n&#39;)) }, create() {}, delete() {}, update(data) { Object.assign(m.data, data) eventBus.trigger(&#39;m:updated&#39;) localStorage.setItem(&#39;n&#39;, m.data.n) }, get() {} } // 视图相关都放到v const v = { el: null, html: ` &lt;div&gt; &lt;div class=&#34;output&#34;&gt; &lt;span id=&#34;number&#34;&gt;{{n}}&lt;/span&gt; &lt;/div&gt; &lt;div class=&#34;actions&#34;&gt; &lt;button id=&#34;add1&#34;&gt;&#43;1&lt;/button&gt; &lt;button id=&#34;minus1&#34;&gt;-1&lt;/button&gt; &lt;button id=&#34;mul2&#34;&gt;*2&lt;/button&gt; &lt;button id=&#34;divide2&#34;&gt;÷2&lt;/button&gt; &lt;/div&gt; &lt;/div&gt; `, init(container) { v."/>
+<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:500,100,300" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" media="screen" href="/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" /><script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script><script src="/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper post">
+		<div class="header">
+	<h1 class="site-title">小郭的博客</h1>
+	<div class="site-description"><h2></h2><nav class="nav social">
+			<ul class="flat"><a href="https://github.com/vividvilla/ezhil" title="Github"><i data-feather="github"></i></a><a href="https://twitter.com/gohugoio" title="Twitter"><i data-feather="twitter"></i></a></ul>
+		</nav>
+	</div>
+
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="">我的博客</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
+
+
+		<div class="post-header">
+			<h1 class="title">MVC浅析</h1>
+			<div class="meta">Posted at &mdash; Dec 22, 2019</div>
+		</div>
+
+		<div class="markdown">
+			
+
+<h4 id="mvc">MVC</h4>
+
+<ol>
+<li>M 模型（Model），负责操作所有数据</li>
+<li>V 视图（View），负责所有UI界面</li>
+
+<li><p>C 控制器 Controller），连接交互和数据模型的一个控制器</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00f">import</span> <span style="color:#a31515">&#39;./app1.css&#39;</span>
+<span style="color:#00f">import</span> $ from <span style="color:#a31515">&#39;jquery&#39;</span>
+
+<span style="color:#00f">const</span> eventBus = $(window)
+<span style="color:#008000">// 数据相关都放到m
+</span><span style="color:#008000"></span><span style="color:#00f">const</span> m = {
+data: {
+n: parseInt(localStorage.getItem(<span style="color:#a31515">&#39;n&#39;</span>))
+},
+create() {},
+<span style="color:#00f">delete</span>() {},
+update(data) {
+Object.assign(m.data, data)
+eventBus.trigger(<span style="color:#a31515">&#39;m:updated&#39;</span>)
+localStorage.setItem(<span style="color:#a31515">&#39;n&#39;</span>, m.data.n)
+},
+get() {}
+}
+<span style="color:#008000">// 视图相关都放到v
+</span><span style="color:#008000"></span><span style="color:#00f">const</span> v = {
+el: <span style="color:#00f">null</span>,
+html: <span style="color:#a31515">`
+</span><span style="color:#a31515">&lt;div&gt;
+</span><span style="color:#a31515">&lt;div class=&#34;output&#34;&gt;
+</span><span style="color:#a31515">  &lt;span id=&#34;number&#34;&gt;{{n}}&lt;/span&gt;
+</span><span style="color:#a31515">&lt;/div&gt;
+</span><span style="color:#a31515">&lt;div class=&#34;actions&#34;&gt;
+</span><span style="color:#a31515">  &lt;button id=&#34;add1&#34;&gt;+1&lt;/button&gt;
+</span><span style="color:#a31515">  &lt;button id=&#34;minus1&#34;&gt;-1&lt;/button&gt;
+</span><span style="color:#a31515">  &lt;button id=&#34;mul2&#34;&gt;*2&lt;/button&gt;
+</span><span style="color:#a31515">  &lt;button id=&#34;divide2&#34;&gt;÷2&lt;/button&gt;
+</span><span style="color:#a31515">&lt;/div&gt;
+</span><span style="color:#a31515">&lt;/div&gt;
+</span><span style="color:#a31515">`</span>,
+init(container) {
+v.el = $(container)
+},
+render(n) {
+<span style="color:#00f">if</span> (v.el.children.length !== 0) v.el.empty()
+$(v.html.replace(<span style="color:#a31515">&#39;{{n}}&#39;</span>, n))
+  .appendTo(v.el)
+}
+}
+<span style="color:#008000">// 其他都c
+</span><span style="color:#008000"></span><span style="color:#00f">const</span> c = {
+init(container) {
+v.init(container)
+v.render(m.data.n) <span style="color:#008000">// view = render(data)
+</span><span style="color:#008000"></span>c.autoBindEvents()
+eventBus.on(<span style="color:#a31515">&#39;m:updated&#39;</span>, () =&gt; {
+  console.log(<span style="color:#a31515">&#39;here&#39;</span>)
+  v.render(m.data.n)
+})
+},
+events: {
+<span style="color:#a31515">&#39;click #add1&#39;</span>: <span style="color:#a31515">&#39;add&#39;</span>,
+<span style="color:#a31515">&#39;click #minus1&#39;</span>: <span style="color:#a31515">&#39;minus&#39;</span>,
+<span style="color:#a31515">&#39;click #mul2&#39;</span>: <span style="color:#a31515">&#39;mul&#39;</span>,
+<span style="color:#a31515">&#39;click #divide2&#39;</span>: <span style="color:#a31515">&#39;div&#39;</span>,
+},
+add() {
+m.update({n: m.data.n + 1})
+},
+minus() {
+m.update({n: m.data.n - 1})
+},
+mul() {
+m.update({n: m.data.n * 2})
+},
+div() {
+m.update({n: m.data.n / 2})
+},
+autoBindEvents() {
+<span style="color:#00f">for</span> (<span style="color:#00f">let</span> key <span style="color:#00f">in</span> c.events) {
+  <span style="color:#00f">const</span> value = c[c.events[key]]
+  <span style="color:#00f">const</span> spaceIndex = key.indexOf(<span style="color:#a31515">&#39; &#39;</span>)
+  <span style="color:#00f">const</span> part1 = key.slice(0, spaceIndex)
+  <span style="color:#00f">const</span> part2 = key.slice(spaceIndex + 1)
+  v.el.on(part1, part2, value)
+}
+}
+}
+</code></pre></div></li>
+</ol>
+
+<h4 id="eventbus">EventBus</h4>
+
+<ol>
+<li><p>对各组件进行监听，和实现各组件进行通信</p>
+
+<ul>
+<li>EventBus.on（）监听事件</li>
+
+<li><p>EventBus.trigger（）触发事件</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#008000">//eventBus 触发 m:updated
+</span><span style="color:#008000"></span>eventBus.trigger(<span style="color:#a31515">&#39;m:updated&#39;</span>)
+<span style="color:#008000">//监听 m:updated，当 m:updated 触发时，执行事件
+</span><span style="color:#008000"></span>eventBus.on(<span style="color:#a31515">&#39;m:updated&#39;</span>,()=&gt;{
+v.render(m.data.n)
+})
+</code></pre></div></li>
+</ul></li>
+</ol>
+
+<h4 id="表驱动编程">表驱动编程</h4>
+
+<p>表驱动法是一种编程模式，从表里面查找信息而不是使用逻辑语句（if…else…switch），当是很简单的情况时，用逻辑语句很简单，但如果逻辑很复杂，再使用逻辑语句就很麻烦了。
+比如查找一年中每个月份的天数，如果用表驱动法，完全不需要写一堆if…else…语句，直接把每个月份的天数存到一个数组里就行了，取值的时候直接下标访问，最多针对二月判断一下闰年。</p>
+
+<h4 id="模块化">模块化</h4>
+
+<p>将具有不同的功能的js封装起来，独立在不同的文件中，最后在入口文件中一起引入。</p>
+
+		</div><div id="disqus_thread"></div>
+<script type="text/javascript">
+	(function () {
+		
+		
+		if (window.location.hostname == "localhost")
+			return;
+
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		var disqus_shortname = 'localhost';
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+		Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div><a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-123-45', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<script>feather.replace()</script>
+</body>
+</html>

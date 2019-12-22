@@ -6,10 +6,20 @@
     <description>Recent content in Posts on 小郭的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-Hans</language>
-    <lastBuildDate>Sun, 22 Dec 2019 14:23:16 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 22 Dec 2019 20:17:46 +0800</lastBuildDate>
     
 	<atom:link href="http://example.org/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>MVC浅析</title>
+      <link>http://example.org/posts/mvc%E6%B5%85%E6%9E%90/</link>
+      <pubDate>Sun, 22 Dec 2019 20:17:46 +0800</pubDate>
+      
+      <guid>http://example.org/posts/mvc%E6%B5%85%E6%9E%90/</guid>
+      <description>MVC  M 模型（Model），负责操作所有数据 V 视图（View），负责所有UI界面 C 控制器 Controller），连接交互和数据模型的一个控制器
+import &amp;#39;./app1.css&amp;#39; import $ from &amp;#39;jquery&amp;#39; const eventBus = $(window) // 数据相关都放到m const m = { data: { n: parseInt(localStorage.getItem(&amp;#39;n&amp;#39;)) }, create() {}, delete() {}, update(data) { Object.assign(m.data, data) eventBus.trigger(&amp;#39;m:updated&amp;#39;) localStorage.setItem(&amp;#39;n&amp;#39;, m.data.n) }, get() {} } // 视图相关都放到v const v = { el: null, html: ` &amp;lt;div&amp;gt; &amp;lt;div class=&amp;#34;output&amp;#34;&amp;gt; &amp;lt;span id=&amp;#34;number&amp;#34;&amp;gt;{{n}}&amp;lt;/span&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;actions&amp;#34;&amp;gt; &amp;lt;button id=&amp;#34;add1&amp;#34;&amp;gt;+1&amp;lt;/button&amp;gt; &amp;lt;button id=&amp;#34;minus1&amp;#34;&amp;gt;-1&amp;lt;/button&amp;gt; &amp;lt;button id=&amp;#34;mul2&amp;#34;&amp;gt;*2&amp;lt;/button&amp;gt; &amp;lt;button id=&amp;#34;divide2&amp;#34;&amp;gt;÷2&amp;lt;/button&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; `, init(container) { v.</description>
+    </item>
     
     <item>
       <title>Vue</title>
