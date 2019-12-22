@@ -6,10 +6,23 @@
     <description>Recent content on 小郭的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-Hans</language>
-    <lastBuildDate>Wed, 11 Dec 2019 22:17:44 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 22 Dec 2019 14:23:16 +0800</lastBuildDate>
     
 	<atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Vue</title>
+      <link>http://example.org/posts/vue/</link>
+      <pubDate>Sun, 22 Dec 2019 14:23:16 +0800</pubDate>
+      
+      <guid>http://example.org/posts/vue/</guid>
+      <description>Vue 两个版本  cdn引入：完整版 vue.js , 非完整版 vue.runtime.js (生产环境则后缀名为min.js) 完整版有compiler，非完整版没有compiler，compiler占用40%的内存 使用方法
+ 完整版使用template,会用到编译器
+new Vue({ template:` &amp;lt;div id=&amp;#34;app&amp;#34;&amp;gt;{{n}}&amp;lt;button @click=&amp;#34;add&amp;#34;&amp;gt;+1&amp;lt;/button&amp;gt;&amp;lt;/div&amp;gt;`, el:&amp;#34;#app&amp;#34;, data(){ return{ n:0} }, methods:{ add(){this.n+=1} } })  非完整版使用render，不需要编译器
+new Vue({ el:&amp;#34;#app&amp;#34;, data(){ return{ n:0} }, methods:{ add(){ this.n+=1 }}, render(h){ return h(&amp;#39;div&amp;#39;, [this.n,h(&amp;#39;button&amp;#39;,{on:{click:this.add}},&amp;#39;+1&amp;#39;)]) } })  非完整版本还可以使用vue-loader,可以把.vue翻译成h构建方法，但是这种方式SEO不友好
+&amp;lt;!--demo.vue文件--&amp;gt; &amp;lt;template&amp;gt; &amp;lt;div&amp;gt; &amp;lt;div &amp;gt;{{n}}&amp;lt;/div&amp;gt; &amp;lt;button @click=&amp;#34;add&amp;#34;&amp;gt; +1&amp;lt;/button&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/template&amp;gt; &amp;lt;script&amp;gt; export default { data(){ return{n:0} }, methods:{ add(){this.n+=1} }} &amp;lt;/script&amp;gt;import demo from &amp;#39;.</description>
+    </item>
     
     <item>
       <title>JSON</title>
