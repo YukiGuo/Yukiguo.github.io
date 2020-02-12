@@ -6,10 +6,23 @@
     <description>Recent content in Posts on 小郭的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-Hans</language>
-    <lastBuildDate>Sun, 22 Dec 2019 20:17:46 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 28 Dec 2019 15:24:53 +0800</lastBuildDate>
     
 	<atom:link href="http://example.org/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>JS函数</title>
+      <link>http://example.org/posts/js%E5%87%BD%E6%95%B0/</link>
+      <pubDate>Sat, 28 Dec 2019 15:24:53 +0800</pubDate>
+      
+      <guid>http://example.org/posts/js%E5%87%BD%E6%95%B0/</guid>
+      <description>函数声明的方法  具名函数 function fn(){} 匿名函数/函数表达式 let a = function(){} 箭头函数 let a =（x,y）=&amp;gt;{x*y}，没有this  参数只有一个时可以写成 let a = x =&amp;gt; x*x {} 内只有一个表达式时可以省略{}和return，如果想表达返回一个对象,需要加一个圆括号 let a =x =&amp;gt;({name:a})  构造函数 let fn1 =new Function(&amp;ldquo;x&amp;rdquo;,&amp;ldquo;y&amp;rdquo;,&amp;ldquo;return x*y&amp;rdquo;)
+ 所有函数是由Function 构造的
+let a = function fn(){},这种声明方式无法，在外部无法调用 fn()，因为fn 的作用域只在等号右面   函数的要素  调用时机 作用域  全局变量:在顶级作用域声明的变量;或者直接声明 window.a 局部变量
+ 作用域规则(如果多个作用域有同名变量a)  查找a的声明，就向上取就近的作用域 查找a的过程和函数执行无关，但是a的值与函数执行有关
+   闭包  如果一个函数用到了外部的变量，那么这个函数加这个变量就叫做闭包  形式参数 返回值  每个函数都有返回值,不写return,返回值则是undefined 只有函数有返回值  调用栈 7.</description>
+    </item>
     
     <item>
       <title>MVC浅析</title>
@@ -114,8 +127,9 @@ var HtmlWebpackPlugin = require(&amp;#39;html-webpack-plugin&amp;#39;); module.<
       <description> 同源策略  浏览器故意设计的一个功能限制 如果JS运行在源A里面，就只能获取源A的数据，不能获取源B的数据，即不允许跨域 目的 为保护用户隐私 限制的是数据访问，可以引用，不能读取。我们在引用CSS和JS时，不知道其内部的数据，只是让css或者JS在我们的也页面执行  同源  源： 协议+域名+端口号(不同端口，同一个IP，同一个域名，都可能) 如果两个url的源一致，则这两个url同源  CORS  Cross Origin Resource 方法1：response.setHeader(&amp;lsquo;Access-Control-Allow-Origin&amp;rsquo;,&amp;lsquo;http://frank.com:9999&#39;)
 JSONP 浏览器因为某些原因不支持CORS ，必须用另种方式跨域，请求一个JS文件，JS会执行一个回调函数，回调的函数名是可以随机生成的，以callback参数传给后台，后台会把函数再次返回给我们再执行
  优点:支持IE，可以跨域
- 缺点:由于是Script标签，无法AJAX那样读取精确的状态，只有成功和失败；只能发GET请求，不接受POST
-  </description>
+ 缺点:由于是Script标签，无法AJAX那样读取精确的状态，只有成功和失败；只能发GET请求，不接受POS
+ 优化
+ 检查refererrequest.headers[&amp;quot;referer&amp;quot;] 使用随机数作为 函数名(caallback)，并传输给后台，将数据中的原始占位符,替换为随机函数名 script 加载完成拿到数据后，删除此标签   </description>
     </item>
     
     <item>
@@ -173,7 +187,8 @@ let minOf2 =[a,b]=&amp;gt;a&amp;lt;b?a:b //调用 小白调用法：minOf2([3,6]
       <pubDate>Sat, 21 Sep 2019 21:26:03 +0800</pubDate>
       
       <guid>http://example.org/posts/js%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%B1%BB/</guid>
-      <description> 构造函数 let obj = New X()  自动创建了一个空对象 自动为空对象关联原型，原型地址指定为X。prototype 自动将空对象作为this关键字运行的构造函数 自动return this  构造函数本身X  X函数负责给对象本身添加属性 X.prototype 对象负责添加新对象的共有属性（X.prototype 存着原型的地址）  如何确定一个对象的原型是什么？  对象.proto===其构造函数.prototype Object.prototype === null,Object 是一个根对象，没有原型  代码规范  构造函数 首字母大写 被构造出的对象首字母小写 构造函数名称一般使用名词，其它函数名称使用动词开头   window 是由Window构造的 window.Object 是 Function 构造的 浏览器构造了Function 并且指定它的构造者就是自己  Class新语法 class Square{ constructor(width){ this.width =width getArea(){return this.width*this.width} } getLength(){return this.width*4} }</description>
+      <description>构造函数 let obj = New X()  自动创建了一个空对象 自动为空对象关联原型，原型地址指定为X。prototype 自动将空对象作为this关键字运行的构造函数 自动return this
+{ // 正方形使用 原型结合更紧密 let squareList = []; let widthList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] function CreateSquare(width) { let obj = Object.create(CreateSquare.squarePrototype) obj.width = width return obj } CreateSquare.squarePrototype = { getArea() { return (this.width * this.width) }, getLength() { return (this.width * 4) }, constructor: CreateSquare } for (let i = 0; i &amp;lt; 12; i++) { squareList[i] = CreateSquare(widthList[i]) } } //使用new语法 function CreateSquare(width) { this.</description>
     </item>
     
     <item>

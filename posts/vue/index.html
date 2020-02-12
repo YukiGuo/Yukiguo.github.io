@@ -117,20 +117,130 @@ el:<span style="color:#a31515">&#34;#app&#34;</span>,
 </span><span style="color:#008000"></span>render(h){
 <span style="color:#00f">return</span> h(demo)}
 })
-</code></pre></div></li>
+</code></pre></div>
+<h4 id="template-三种写法">template 三种写法</h4></li>
 </ul></li>
+
+<li><p>完整版本&mdash;1
+Html文件
+<div id="app">{{n}}
+<button></button>
+<div>
+main.js文件
+new Vue({
+el:&ldquo;#app&rdquo;
+data:{},
+methods
+})</p></li>
+
+<li><p>完整版本&mdash;2
+main.js文件
+new Vue({
+el:&ldquo;#app&rdquo;,
+template:<code>
+&lt;div &gt;{{n}}
+&lt;button&gt;&lt;/button&gt;
+&lt;div&gt;
+</code>
+data:{n:0},
+methods:{}
+})</p></li>
+
+<li><p>vue单文件
+<template>
+<div >{{n}}
+<button></button>
+<div>
+</template><br />
+<script>
+export default{
+data(){
+n:0
+},
+methods:{},
+}
+</script>
+main.js文件
+new Vue({
+render:h=&gt;h(XXX)
+}).$mount(&ldquo;#app&rdquo;)</p></li>
 </ol>
 
-<h4 id="vue构造选项-options">vue构造选项（options）</h4>
+<h4 id="template-语法-使用xml语法">template 语法，使用XML语法</h4>
+
+<h4 id="指令directive">指令Directive</h4>
+
+<h5 id="展示内容">展示内容</h5>
+
+<ul>
+<li>表达式
 
 <ol>
-<li>el
+<li>{{表达式}}，可以写表达式,运算，调用函数，如果值为undefined或者null,则不显示</li>
+<li><div v-text='表达式'></div></li>
+</ol></li>
+<li>HTML内容
+<div v-html='<strong>hi</strong>&rsquo;&gt;</div></li>
+
+<li><p>展示两个花括号{{}},v-pre不会对模板进行编译
+<div v-pre>&lt;{{n}}/div&gt;</p>
+
+<h5 id="绑定属性">绑定属性</h5></li>
+
+<li><p>绑定src <img v-bind:src='x'/>,可以简写为<img :src="x"/></p></li>
+
+<li><p>绑定对象 <div :style="{border:'1px solid red',height:'100'}"></div> 100px可以简写为100</p>
+
+<h4 id="绑定事件">绑定事件</h4></li>
+
+<li><p>v-on:click=add，简写为@click=add, 后面也可直接接代买@click=&lsquo;n+=1&rsquo;</p></li>
+
+<li><p><a  @ click.prevent='x' href="baidu.com"></a>,阻止默认动作并执行新的函数(修饰符)</p></li>
+</ul>
+
+<h4 id="条件判断">条件判断</h4>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;div v-if=<span style="color:#a31515">&#39;x&gt;0&#39;</span>&gt;第一种请求&lt;/div&gt;
+&lt;div v-else-if=<span style="color:#a31515">&#39;x===0&#39;</span>&gt;第二种请求&lt;/div&gt;
+&lt;div v-else&gt;第三种请求&lt;/div&gt;</code></pre></div>
+<h4 id="循环">循环</h4>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;div v-for=<span style="color:#a31515">&#34;(item,index) in array&#34;</span> :key=<span style="color:#a31515">&#34;index&#34;</span>&gt;必须有Key
+索引{{index}}---值{{item.value}}
+&lt;/div&gt;</code></pre></div>
+<h4 id="显示-隐藏">显示&amp;隐藏</h4>
+
+<ul>
+<li>v-show
+<div v-show ="n%2===0">n是偶数</div></li>
+</ul>
+
+<h4 id="v-model">v-model</h4>
+
+<h4 id="v-slot">v-slot</h4>
+
+<h4 id="v-clock">v-clock</h4>
+
+<h4 id="v-once">v-once</h4>
+
+<h4 id="修饰符">修饰符</h4>
+
+<ul>
+<li>@click.stop 阻止事件传播冒泡</li>
+<li>@click.prevent 阻止事件默认动作</li>
+<li>@click.stop.prevent</li>
+<li>@keypress.keyCode||keyAlias=&ldquo;fn&rdquo; ,</li>
+
+<li><p>.sy</p>
+
+<h4 id="vue构造选项-options">vue构造选项（options）</h4></li>
+
+<li><p>el</p>
 
 <ul>
 <li>挂载点，需要渲染在页面的哪一部分<code>new Vue({el:'#app')}</code></li>
 <li>可以使用$mount 代替，`<code>new Vue{()}.$mount('#app')</code></li>
 </ul></li>
-<li>data
+
+<li><p>data</p>
 
 <ul>
 <li>data 有函数和对象两种写法，优先使用函数方法，在vue组件中只能写函数方法<br /></li>
@@ -153,7 +263,9 @@ even(){<span style="color:#00f">return</span> <span style="color:#00f">this</spa
 }
 </code></pre></div></li>
 </ol></li>
+</ul>
 
+<ol>
 <li><p>components组件,三种使用方法</p>
 
 <ol>
@@ -201,6 +313,93 @@ template:<span style="color:#a31515">`&lt;div&gt;Demo3&lt;/div&gt;`</span>}
 </ol>
 
 <h4 id="props">props</h4>
+
+<h4 id="vue-数据响应式">Vue  数据响应式</h4>
+
+<ol>
+<li>如果修改vm.n,则UI 中的n 则会更新成最新的值<code>const vm = new Vue({data:{n:0}})</code></li>
+<li>利用 Object.defineProperty</li>
+<li>Vue data的Bug
+
+<ul>
+<li>只能监听本来就存在的值，如果不存在则会报错</li>
+<li>但是如果这个值是对象，那么只会监听到第一层，不会监听到第二层。例如 obj={a:1},但是页面中渲染了<div>{{obj.b}}</div>,则不会报错，如果通过methods的方法设置obj.b的值，页面也不会显示，无法监听本来不存在的obj.b</li>
+</ul></li>
+
+<li><p>解决方法：通过Vue.set,或者this.$set</p>
+
+<ul>
+<li>新增key</li>
+
+<li><p>自动创建代理和监听(如果没有)</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">methods:{
+setB(){
+Vue.set(<span style="color:#00f">this</span>.obj,b,1)
+<span style="color:#008000">//this.$set(this.obj,b,1)
+</span><span style="color:#008000"></span>}
+}
+</code></pre></div></li>
+</ul>
+
+<ol>
+<li>数组的变异方法</li>
+<li>数组是特殊的对象，每次增加数组的长度，都需要通过Vue.set</li>
+
+<li><p>Vue 通过篡改了js Array数组的push,pop,reverse,shift ,unshift,sort ,splice</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00f">class</span> VueArray <span style="color:#00f">extends</span> Array{
+push(...args){
+<span style="color:#00f">const</span> oldLength = <span style="color:#00f">this</span>.length
+<span style="color:#00f">super</span>.push(...args)
+console.log(<span style="color:#a31515">&#39;push&#39;</span>)
+<span style="color:#00f">for</span>(<span style="color:#00f">let</span> i=oldLength;i&lt;<span style="color:#00f">this</span>.length;i++&gt;){
+  Vue.set(<span style="color:#00f">this</span>,i,<span style="color:#00f">this</span>[i])
+}
+}
+}
+<span style="color:#00f">const</span> a=<span style="color:#00f">new</span> VueArray(1,2,3,4)
+</code></pre></div></li>
+</ol></li>
+
+<li><p>getter</p></li>
+
+<li><p>setter</p></li>
+</ol>
+
+<h4 id="computed属性-watch属性">computed属性 &amp; watch属性</h4>
+
+<ol>
+<li><p>computed  计算属性</p>
+
+<ul>
+<li>computed:{
+get(){},
+set(){}
+}</li>
+<li>默认有缓存，如果依赖属性没有变动,则不会重新计算，methods每次都会计算，getter 和setter默认是不会缓存的，是Vue自行做了处理</li>
+</ul></li>
+
+<li><p>watch 监听属性</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">watch<span style="">：</span>{
+n(oldValue,newValue){
+}
+}
+watch:{
+<span style="color:#a31515">&#39;user.email&#39;</span>:<span style="color:#00f">function</span>(){
+
+}
+<span style="color:#a31515">&#39;user.name&#39;</span>:{
+handler(){},
+immediate:<span style="color:#00f">true</span>,
+deep:<span style="color:#00f">true</span> 
+<span style="color:#008000">//watch 监测数据的变化时，对于对象obj={a:&#34;a&#34;},如果将obj.a=b默认为obj没有变化,如果需要obj.a变化了，obj也变化的话就需要设置deep:true
+</span><span style="color:#008000"></span>}
+} 
+</code></pre></div></li>
+</ol>
+
+<ul>
+<li>watch内部不能使用箭头函数</li>
+</ul>
 
 		</div><div id="disqus_thread"></div>
 <script type="text/javascript">

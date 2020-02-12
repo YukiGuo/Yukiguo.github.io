@@ -4,14 +4,16 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>JS对象的类 - 小郭的博客</title><meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta property="og:title" content="JS对象的类" />
-<meta property="og:description" content=" 构造函数 let obj = New X()  自动创建了一个空对象 自动为空对象关联原型，原型地址指定为X。prototype 自动将空对象作为this关键字运行的构造函数 自动return this  构造函数本身X  X函数负责给对象本身添加属性 X.prototype 对象负责添加新对象的共有属性（X.prototype 存着原型的地址）  如何确定一个对象的原型是什么？  对象.proto===其构造函数.prototype Object.prototype === null,Object 是一个根对象，没有原型  代码规范  构造函数 首字母大写 被构造出的对象首字母小写 构造函数名称一般使用名词，其它函数名称使用动词开头   window 是由Window构造的 window.Object 是 Function 构造的 浏览器构造了Function 并且指定它的构造者就是自己  Class新语法 class Square{ constructor(width){ this.width =width getArea(){return this.width*this.width} } getLength(){return this.width*4} }" />
+<meta property="og:description" content="构造函数 let obj = New X()  自动创建了一个空对象 自动为空对象关联原型，原型地址指定为X。prototype 自动将空对象作为this关键字运行的构造函数 自动return this
+{ // 正方形使用 原型结合更紧密 let squareList = []; let widthList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] function CreateSquare(width) { let obj = Object.create(CreateSquare.squarePrototype) obj.width = width return obj } CreateSquare.squarePrototype = { getArea() { return (this.width * this.width) }, getLength() { return (this.width * 4) }, constructor: CreateSquare } for (let i = 0; i &lt; 12; i&#43;&#43;) { squareList[i] = CreateSquare(widthList[i]) } } //使用new语法 function CreateSquare(width) { this." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://example.org/posts/js%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%B1%BB/" />
 <meta property="article:published_time" content="2019-09-21T21:26:03+08:00" />
 <meta property="article:modified_time" content="2019-09-21T21:26:03+08:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="JS对象的类"/>
-<meta name="twitter:description" content=" 构造函数 let obj = New X()  自动创建了一个空对象 自动为空对象关联原型，原型地址指定为X。prototype 自动将空对象作为this关键字运行的构造函数 自动return this  构造函数本身X  X函数负责给对象本身添加属性 X.prototype 对象负责添加新对象的共有属性（X.prototype 存着原型的地址）  如何确定一个对象的原型是什么？  对象.proto===其构造函数.prototype Object.prototype === null,Object 是一个根对象，没有原型  代码规范  构造函数 首字母大写 被构造出的对象首字母小写 构造函数名称一般使用名词，其它函数名称使用动词开头   window 是由Window构造的 window.Object 是 Function 构造的 浏览器构造了Function 并且指定它的构造者就是自己  Class新语法 class Square{ constructor(width){ this.width =width getArea(){return this.width*this.width} } getLength(){return this.width*4} }"/>
+<meta name="twitter:description" content="构造函数 let obj = New X()  自动创建了一个空对象 自动为空对象关联原型，原型地址指定为X。prototype 自动将空对象作为this关键字运行的构造函数 自动return this
+{ // 正方形使用 原型结合更紧密 let squareList = []; let widthList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] function CreateSquare(width) { let obj = Object.create(CreateSquare.squarePrototype) obj.width = width return obj } CreateSquare.squarePrototype = { getArea() { return (this.width * this.width) }, getLength() { return (this.width * 4) }, constructor: CreateSquare } for (let i = 0; i &lt; 12; i&#43;&#43;) { squareList[i] = CreateSquare(widthList[i]) } } //使用new语法 function CreateSquare(width) { this."/>
 <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:500,100,300" rel="stylesheet">
 
 	<link rel="stylesheet" type="text/css" media="screen" href="/css/normalize.css" />
@@ -53,7 +55,45 @@
 <li>自动创建了一个空对象</li>
 <li>自动为空对象关联原型，原型地址指定为X。prototype</li>
 <li>自动将空对象作为this关键字运行的构造函数</li>
-<li>自动return this</li>
+
+<li><p>自动return this</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">{
+<span style="color:#008000">// 正方形使用 原型结合更紧密
+</span><span style="color:#008000"></span><span style="color:#00f">let</span> squareList = [];
+<span style="color:#00f">let</span> widthList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+<span style="color:#00f">function</span> CreateSquare(width) {
+    <span style="color:#00f">let</span> obj = Object.create(CreateSquare.squarePrototype)
+    obj.width = width
+    <span style="color:#00f">return</span> obj
+}
+CreateSquare.squarePrototype = {
+    getArea() {
+        <span style="color:#00f">return</span> (<span style="color:#00f">this</span>.width * <span style="color:#00f">this</span>.width)
+    },
+    getLength() {
+        <span style="color:#00f">return</span> (<span style="color:#00f">this</span>.width * 4)
+    },
+    constructor: CreateSquare
+}
+
+<span style="color:#00f">for</span> (<span style="color:#00f">let</span> i = 0; i &lt; 12; i++) {
+    squareList[i] = CreateSquare(widthList[i])
+}
+
+}
+
+<span style="color:#008000">//使用new语法
+</span><span style="color:#008000"></span><span style="color:#00f">function</span> CreateSquare(width) {
+    <span style="color:#00f">this</span>.width = width
+}
+CreateSquare.prototype.getArea = <span style="color:#00f">function</span> () {
+    <span style="color:#00f">return</span> (<span style="color:#00f">this</span>.width * <span style="color:#00f">this</span>.width)
+}
+CreateSquare.prototype.getLength = <span style="color:#00f">function</span> () {
+    <span style="color:#00f">return</span> (<span style="color:#00f">this</span>.width * 4)
+}
+<span style="color:#00f">let</span> square = <span style="color:#00f">new</span> CreateSquare(5)
+</code></pre></div></li>
 </ol>
 
 <h4 id="构造函数本身x">构造函数本身X</h4>
@@ -85,14 +125,14 @@
 </ol>
 
 <h4 id="class新语法">Class新语法</h4>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">class Square{
-constructor(width){
-this.width =width
-getArea(){return this.width*this.width}
-}
-getLength(){return this.width*4}
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00f">class</span> Square{
+  constructor(width){
+   <span style="color:#00f">this</span>.width =width
+  getArea(){<span style="color:#00f">return</span> <span style="color:#00f">this</span>.width*<span style="color:#00f">this</span>.width}}
+  getLength(){<span style="color:#00f">return</span> <span style="color:#00f">this</span>.width*4}
 
-}</pre></div>
+}
+</code></pre></div>
 		</div><div id="disqus_thread"></div>
 <script type="text/javascript">
 	(function () {

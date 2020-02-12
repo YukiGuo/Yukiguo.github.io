@@ -7,8 +7,9 @@
 <meta property="og:description" content=" 同源策略  浏览器故意设计的一个功能限制 如果JS运行在源A里面，就只能获取源A的数据，不能获取源B的数据，即不允许跨域 目的 为保护用户隐私 限制的是数据访问，可以引用，不能读取。我们在引用CSS和JS时，不知道其内部的数据，只是让css或者JS在我们的也页面执行  同源  源： 协议&#43;域名&#43;端口号(不同端口，同一个IP，同一个域名，都可能) 如果两个url的源一致，则这两个url同源  CORS  Cross Origin Resource 方法1：response.setHeader(&lsquo;Access-Control-Allow-Origin&rsquo;,&lsquo;http://frank.com:9999&#39;)
 JSONP 浏览器因为某些原因不支持CORS ，必须用另种方式跨域，请求一个JS文件，JS会执行一个回调函数，回调的函数名是可以随机生成的，以callback参数传给后台，后台会把函数再次返回给我们再执行
  优点:支持IE，可以跨域
- 缺点:由于是Script标签，无法AJAX那样读取精确的状态，只有成功和失败；只能发GET请求，不接受POST
-  " />
+ 缺点:由于是Script标签，无法AJAX那样读取精确的状态，只有成功和失败；只能发GET请求，不接受POS
+ 优化
+ 检查refererrequest.headers[&quot;referer&quot;] 使用随机数作为 函数名(caallback)，并传输给后台，将数据中的原始占位符,替换为随机函数名 script 加载完成拿到数据后，删除此标签   " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://example.org/posts/%E8%B7%A8%E5%9F%9F/" />
 <meta property="article:published_time" content="2019-11-11T20:20:55+08:00" />
@@ -18,8 +19,9 @@ JSONP 浏览器因为某些原因不支持CORS ，必须用另种方式跨域，
 <meta name="twitter:description" content=" 同源策略  浏览器故意设计的一个功能限制 如果JS运行在源A里面，就只能获取源A的数据，不能获取源B的数据，即不允许跨域 目的 为保护用户隐私 限制的是数据访问，可以引用，不能读取。我们在引用CSS和JS时，不知道其内部的数据，只是让css或者JS在我们的也页面执行  同源  源： 协议&#43;域名&#43;端口号(不同端口，同一个IP，同一个域名，都可能) 如果两个url的源一致，则这两个url同源  CORS  Cross Origin Resource 方法1：response.setHeader(&lsquo;Access-Control-Allow-Origin&rsquo;,&lsquo;http://frank.com:9999&#39;)
 JSONP 浏览器因为某些原因不支持CORS ，必须用另种方式跨域，请求一个JS文件，JS会执行一个回调函数，回调的函数名是可以随机生成的，以callback参数传给后台，后台会把函数再次返回给我们再执行
  优点:支持IE，可以跨域
- 缺点:由于是Script标签，无法AJAX那样读取精确的状态，只有成功和失败；只能发GET请求，不接受POST
-  "/>
+ 缺点:由于是Script标签，无法AJAX那样读取精确的状态，只有成功和失败；只能发GET请求，不接受POS
+ 优化
+ 检查refererrequest.headers[&quot;referer&quot;] 使用随机数作为 函数名(caallback)，并传输给后台，将数据中的原始占位符,替换为随机函数名 script 加载完成拿到数据后，删除此标签   "/>
 <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:500,100,300" rel="stylesheet">
 
 	<link rel="stylesheet" type="text/css" media="screen" href="/css/normalize.css" />
@@ -84,7 +86,15 @@ JSONP 浏览器因为某些原因不支持CORS ，必须用另种方式跨域，
 
 <li><p>优点:支持IE，可以跨域</p></li>
 
-<li><p>缺点:由于是Script标签，无法AJAX那样读取精确的状态，只有成功和失败；只能发GET请求，不接受POST</p></li>
+<li><p>缺点:由于是Script标签，无法AJAX那样读取精确的状态，只有成功和失败；只能发GET请求，不接受POS</p></li>
+
+<li><p>优化</p>
+
+<ul>
+<li>检查referer<code>request.headers[&quot;referer&quot;]</code></li>
+<li>使用随机数作为 函数名(caallback)，并传输给后台，将数据中的原始占位符,替换为随机函数名</li>
+<li>script 加载完成拿到数据后，删除此标签</li>
+</ul></li>
 </ul>
 
 		</div><div id="disqus_thread"></div>
